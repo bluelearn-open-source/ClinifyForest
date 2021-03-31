@@ -49,59 +49,140 @@ Clinify Forest is a pomodoro app made for Clinify Squad Discord Server.
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Major Frameworks used in the development and Production of this web app is as follows
 * [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-
+* [Django](https://www.djangoproject.com/)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Setting up the project locally maybe headache for the first time but believe me it is very easy.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+Prequisites
+* Python
   ```sh
-  npm install npm@latest -g
+  Python version 3.9.2 is used in this project
   ```
-
+* Django installed globally
+  ```sh
+  pip install django -g
+  ```
+* Postgres
+  ```
+  Download and Install postgres from the link below
+  ```
+  [PostGres](https://www.postgresql.org/download/windows/)
+* Virtualenv
+  ```sh
+  pip install virtualenv
+  ```
+* You should compulsorily become a member of Clinify Squad Discord Server link ->
+  [Clinify Squad](https://clinify.in)
+ 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Create a Virtual enviornment
+  ```sh
+  python -m venv csenv
+  ```
+  ```sh
+  ./csenv/Scripts/activate
+  ```
+3. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/tiluckdave/ClinigyForest.git
    ```
-3. Install NPM packages
+3. Install requirements
    ```sh
-   npm install
+   pip install -r requirements.txt
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+4. Setup the database
+   1. Search and open psql from windows search
+   2. create and connect to localhost:5432
+   3. setup new password for postgres
+   4. run below command
    ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
+   CREATE DATABASE clinifyforest;
+   ```
+5. Creating a Discord Application
+   * visit [Discord Developers Portal](https://discord.com/developers/applications)
+   * Login if you are not
+   * click on New application
+   * Name your application whatever you want
+   * headover to `OAuth2` section and click on `Add Ridirect`
+   * Add this url `http://127.0.0.1:8000/login/redirect`
+   * Click on `Save Changes`
+   * Now under `OAuth2 URL Generator`
+   * Select redirect Url as `http://127.0.0.1:8000/login/redirect`
+   * Under scopes select `identify` and `guilds`
+   * A new url will be generated at the bottom Copy it!
+   
+6. Enviornment Variables
+   * In the root folder where `manage.py` file lies create a new `.env` file
+   * Paste the below text to `.env` file
+   ```
+   SECRET_KEY=secretkey
+   DBENGINE=django.db.backends.postgresql
+   DBNAME=clinifyforest
+   DBUSER=postgres
+   DBPASSWORD=<yourpassword>
+   DBHOST=localhost
+   DBPORT=5432
+   OAUTHURL=<your-oauth-url>
+   REDIRECT_URL=http://127.0.0.1:8000/login/redirect
+   CLINIFY_SERVER_ID=740589508365385839
+   MY_DISCORD_CLIENT_ID=<your-discord-client-id>
+   MY_DISCORD_CLIENT_SECRET=<your-discord-client-secret>
+   ```
+   * replace `<yourpassword>` with your postgres password which you just set in step 4
+   * replace `<your-oauth-url>` with the oauthurl you copied at last in the steo 5
+   * replace `<your-discord-client-id>` with your discord developers client id
+   * replace `<your-discord-client-secret>` with your discord developers client secret
+7. Change settings
+   * Open the folder in any of the code editor
+   * Head over to `ClinifyForest` Folder
+   * Open `settings.py` file
+   * find `DATABASES` dictionary and delete it
+   * paste this code at that place
+   ```
+   DATABASES = {
+    'default': {
+        'ENGINE': os.environ.get('DBENGINE'),
+        'NAME': os.environ.get('DBNAME'),
+        'USER': os.environ.get('DBUSER'),
+        'PASSWORD': os.environ.get('DBPASSWORD'),
+        'HOST': os.environ.get('DBHOST'),
+        'PORT': os.environ.get('DBPORT')
+    }
+   }
+   ```
+   * now find these two lines and comment/delete them
+   ```
+   db_from_env = dj_database_url.config(conn_max_age=600)
+   DATABASES['default'].update(db_from_env)
+   ```
+   * save `settings.py`
+9. Make migrations
+   ```sh
+   python manage.py makemigrations
+   ```
+   ```sh
+   python manage.py sqlmigrate login 0001
+   ```
+   ```sh
+   python manage.py migrate
+   ```
+10. Run the server
+    ```sh
+    python manage.py runserver
+    ```
+    And You are good to go
+    Now visit [localhost:8000](http://127.0.0.1:8000)
+   
 
 
 <!-- CONTRIBUTING -->
@@ -117,32 +198,16 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [@tiluckdave](https://twitter.com/tiluckdave) - davetilak003@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Discord Tag - @tiluckdave#4120
 
+Project Link: [https://github.com/tiluckdave/ClinifyForest](https://github.com/tiluckdave/ClinifyForest)
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
+* [Clinify](https://clinify.in)
