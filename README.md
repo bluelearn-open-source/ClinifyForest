@@ -1,14 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
 <p align="center">
 
   <h1 align="center">Best-README-Template</h1>
@@ -19,11 +8,11 @@
     <a href="https://github.com/tiluckdave/ClinifyForest"><strong>Explore the code »</strong></a>
     <br />
     <br />
-    <a href="https://clinifyforest.herokuapp.com/">Visit the site</a>
+    &nbsp;&nbsp;<a href="https://clinifyforest.herokuapp.com/">Visit the site</a>&nbsp;&nbsp;
     ·
-    <a href="https://github.com/tiluckdave/ClinifyForest/issues">Report Bug</a>
+    &nbsp;&nbsp;<a href="https://github.com/tiluckdave/ClinifyForest/issues">Report Bug</a>&nbsp;&nbsp;
     ·
-    <a href="https://github.com/tiluckdave/ClinifyForest/issues">Request Feature</a>
+    &nbsp;&nbsp;<a href="https://github.com/tiluckdave/ClinifyForest/issues">Request Feature</a>&nbsp;&nbsp;
   </p>
 </p>
 
