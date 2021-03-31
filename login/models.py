@@ -22,5 +22,5 @@ class DiscordUser(models.Model):
     def is_authenticated(self, requet):
         return True
 
-    def __self__(self):
+    def __str__(self):
         return self.discord_tag
