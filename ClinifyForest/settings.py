@@ -91,12 +91,12 @@ WSGI_APPLICATION = 'ClinifyForest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('DBENGINE'),
-        'NAME': os.environ.get('DBNAME'),
-        'USER': os.environ.get('DBUSER'),
-        'PASSWORD': os.environ.get('DBPASSWORD'),
-        'HOST': os.environ.get('DBHOST'),
-        'PORT': os.environ.get('DBPORT')
+        # 'ENGINE': os.environ.get('DBENGINE'),
+        # 'NAME': os.environ.get('DBNAME'),
+        # 'USER': os.environ.get('DBUSER'),
+        # 'PASSWORD': os.environ.get('DBPASSWORD'),
+        # 'HOST': os.environ.get('DBHOST'),
+        # 'PORT': os.environ.get('DBPORT')
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
