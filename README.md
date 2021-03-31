@@ -1,6 +1,6 @@
 <p align="center">
 
-  <h1 align="center">Best-README-Template</h1>
+  <h1 align="center">ClinifyForest</h1>
 
   <p align="center">
     Clinify Exclusive Forest App!
