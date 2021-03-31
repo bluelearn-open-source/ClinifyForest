@@ -16,6 +16,7 @@ class DiscordUser(models.Model):
     flags = models.IntegerField()
     locale = models.CharField(max_length=100)
     mfa_enabled = models.BooleanField()
+    room_admin = models.BooleanField(default=False)
     last_login = models.DateTimeField(null=True)
 
     def is_authenticated(self, requet):
