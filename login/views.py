@@ -41,7 +41,7 @@ def exchange_data(code: str):
         'client_secret': os.environ.get('MY_DISCORD_CLIENT_SECRET'),
         'grant_type': 'authorization_code',
         'code': code,
-        'redirect_uri': "http://127.0.0.1:8000/login/redirect",
+        'redirect_uri': os.environ.get('REDIRECT_URL'),
         'scope': 'identify guilds'
     }
     headers = {
