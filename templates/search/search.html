@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock title %}
+
+
+
+{% block body %}
+<div class="container-sm py-3">
+{% if users %}
+    {% for user in users %}
+    <div class="card text-dark bg-warning my-3">
+        <div class="card-header">
+            <strong>{{user.discord_tag}}</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2 d-flex align-items-center justify-content-center">
+                    {% if user.avatar %}
+                    <img src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}.png"
+                        style="border-radius: 50%;">{% else %}<img
+                        src="https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+                        style="border-radius: 50%;" width="128px">{% endif %}
+                </div>
+                <div class="col-md-10 mt-3 mt-md-0">
+                    <ul class="list-group">
+                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has grown
+                            <strong>{{user.trees}}</strong> trees
+                        </li>
+                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has killed
+                            <strong>{{user.deadtrees}}</strong> trees
+                        </li>
+                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has earned
+                            <strong>{{user.coins}}</strong> coins
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% else %}
+<h3 class="text-center">No search results</h3>
+{% endif %}
+</div>
+
+{% endblock body %}

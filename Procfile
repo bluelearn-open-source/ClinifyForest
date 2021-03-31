@@ -1,0 +1,1 @@
+web: gunicorn ClinifyForest.wsgi --log-file -
