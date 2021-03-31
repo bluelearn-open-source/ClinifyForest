@@ -20,9 +20,6 @@ class DiscordUser(models.Model):
 
     def is_authenticated(self, requet):
         return True
-    
-    def getid(self, request):
-        return self.id
 
     def __self__(self):
         return self.discord_tag
