@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-import requests
 from login.models import DiscordUser
 import os
 # Create your views here.
@@ -47,3 +45,12 @@ def store(request):
     if request.user.is_authenticated:
         params = {'loginuser': request.user}
     return render(request, 'main/store.html', params)
+
+def reset(request):
+    if request.user.is_authenticated:
+        current_user = DiscordUser.objects.get(discord_tag=request.user.discord_tag)
+        current_user.trees = 0
+        current_user.deadtrees = 0
+        current_user.coins = 0
+        current_user.save()
+    return redirect(home)
