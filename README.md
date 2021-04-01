@@ -133,7 +133,7 @@ Prequisites
    DBHOST=localhost
    DBPORT=5432
    OAUTHURL=<your-oauth-url>
-   REDIRECT_URL=http://127.0.0.1:8000/login/redirect
+   REDIRECT_URI=http://127.0.0.1:8000/login/redirect
    CLINIFY_SERVER_ID=740589508365385839
    MY_DISCORD_CLIENT_ID=<your-discord-client-id>
    MY_DISCORD_CLIENT_SECRET=<your-discord-client-secret>
