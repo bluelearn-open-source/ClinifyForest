@@ -145,27 +145,17 @@ Prequisites
 7. Change settings
    * Open the folder in any of the code editor
    * Head over to `ClinifyForest` Folder
-   * Open `settings.py` file
-   * find `DATABASES` dictionary and delete it
-   * paste this code at that place
+   * Create a new file called `local_settings.py`
+   * paste this code in the file
    ```
-   DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DBENGINE'),
-        'NAME': os.environ.get('DBNAME'),
-        'USER': os.environ.get('DBUSER'),
-        'PASSWORD': os.environ.get('DBPASSWORD'),
-        'HOST': os.environ.get('DBHOST'),
-        'PORT': os.environ.get('DBPORT')
-    }
-   }
+   import os
+   from .settings import BASE_DIR
+   
+   DEBUG = True
+   TEMPLATE_DEBUG = True
+   ALLOWED_HOSTS = ['127.0.0.1']
    ```
-   * now find these two lines and comment/delete them
-   ```
-   db_from_env = dj_database_url.config(conn_max_age=600)
-   DATABASES['default'].update(db_from_env)
-   ```
-   * save `settings.py`
+   * save `local_settings.py`
 9. Make migrations
    ```sh
    python manage.py makemigrations
