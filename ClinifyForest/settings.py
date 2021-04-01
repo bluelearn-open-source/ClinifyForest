@@ -41,15 +41,16 @@ AUTHENTICATION_BACKENDS = [
 
 INSTALLED_APPS = [
     # 'whitenoise.runserver_nostatic',
-    'main.apps.MainConfig',
-    'login.apps.LoginConfig',
-    'search.apps.SearchConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'main.apps.MainConfig',
+    'login.apps.LoginConfig',
+    'search.apps.SearchConfig',
 ]
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
