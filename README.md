@@ -142,7 +142,7 @@ Prequisites
    * replace `<your-oauth-url>` with the oauthurl you copied at last in the steo 5
    * replace `<your-discord-client-id>` with your discord developers client id
    * replace `<your-discord-client-secret>` with your discord developers client secret
-7. Change settings
+7. Create local settings
    * Open the folder in any of the code editor
    * Head over to `ClinifyForest` Folder
    * Create a new file called `local_settings.py`
