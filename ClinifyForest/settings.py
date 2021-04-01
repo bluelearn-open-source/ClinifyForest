@@ -26,9 +26,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'clinifyforest.herokuapp.com']
+ALLOWED_HOSTS = ['clinifyforest.herokuapp.com']
 
 
 
@@ -91,12 +91,12 @@ WSGI_APPLICATION = 'ClinifyForest.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': os.environ.get('DBENGINE'),
-        # 'NAME': os.environ.get('DBNAME'),
-        # 'USER': os.environ.get('DBUSER'),
-        # 'PASSWORD': os.environ.get('DBPASSWORD'),
-        # 'HOST': os.environ.get('DBHOST'),
-        # 'PORT': os.environ.get('DBPORT')
+        'ENGINE': os.environ.get('DBENGINE'),
+        'NAME': os.environ.get('DBNAME'),
+        'USER': os.environ.get('DBUSER'),
+        'PASSWORD': os.environ.get('DBPASSWORD'),
+        'HOST': os.environ.get('DBHOST'),
+        'PORT': os.environ.get('DBPORT')
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
@@ -139,3 +139,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+try:
+    from .local_settings import *
+except ImportError:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
