@@ -133,7 +133,7 @@ Prequisites
    DBHOST=localhost
    DBPORT=5432
    OAUTHURL=<your-oauth-url>
-   REDIRECT_URL=http://127.0.0.1:8000/login/redirect
+   REDIRECT_URI=http://127.0.0.1:8000/login/redirect
    CLINIFY_SERVER_ID=740589508365385839
    MY_DISCORD_CLIENT_ID=<your-discord-client-id>
    MY_DISCORD_CLIENT_SECRET=<your-discord-client-secret>
@@ -142,7 +142,7 @@ Prequisites
    * replace `<your-oauth-url>` with the oauthurl you copied at last in the steo 5
    * replace `<your-discord-client-id>` with your discord developers client id
    * replace `<your-discord-client-secret>` with your discord developers client secret
-7. Change settings
+7. Create local settings
    * Open the folder in any of the code editor
    * Head over to `ClinifyForest` Folder
    * Create a new file called `local_settings.py`
@@ -153,7 +153,7 @@ Prequisites
    
    DEBUG = True
    TEMPLATE_DEBUG = True
-   ALLOWED_HOSTS = ['127.0.0.1']
+   ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
    ```
    * save `local_settings.py`
 9. Make migrations
