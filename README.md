@@ -94,7 +94,7 @@ Prequisites
   ```
 3. Clone the repo
    ```sh
-   git clone https://github.com/tiluckdave/ClinigyForest.git
+   git clone https://github.com/tiluckdave/ClinifyForest.git
    ```
 3. Install requirements
    ```sh
@@ -139,7 +139,7 @@ Prequisites
    MY_DISCORD_CLIENT_SECRET=<your-discord-client-secret>
    ```
    * replace `<yourpassword>` with your postgres password which you just set in step 4
-   * replace `<your-oauth-url>` with the oauthurl you copied at last in the steo 5
+   * replace `<your-oauth-url>` with the oauthurl you copied at last in the step 5
    * replace `<your-discord-client-id>` with your discord developers client id
    * replace `<your-discord-client-secret>` with your discord developers client secret
 7. Create local settings
