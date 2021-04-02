@@ -1,6 +1,8 @@
+from django.db.models.fields import DateTimeField
 from django.shortcuts import render, redirect
 from login.models import DiscordUser
 import os
+from datetime import datetime, timedelta
 # Create your views here.
 
 def home(request):
@@ -9,6 +11,15 @@ def home(request):
         hiddenval = request.POST['hidden']
         hiddenval = int(hiddenval)
         current_user = DiscordUser.objects.get(discord_tag=request.user.discord_tag)
+        if (int(rangec) > 0):
+            current_user.is_session = True
+            current_user.session_end = timedelta(seconds=(int(rangec)*30*60))
+            current_user.session_end_time = datetime.now() + current_user.session_end
+            print(current_user.session_end_time)            
+
+            # current_user.current_session = 
+            # print(current_user.current_session)
+        
         prev_trees = current_user.trees
         prev_coins = current_user.coins
         prev_dead_trees = current_user.deadtrees
