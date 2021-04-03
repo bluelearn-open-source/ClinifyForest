@@ -21,8 +21,8 @@
     background: #ffc107 !important;
   }
 
-  .yellow-text-timer {
-    color: #ffc107;
+  .white-text-timer {
+    color: #fff !important;
   }
 
   @media only screen and (max-width: 414px) {

@@ -27,33 +27,33 @@ let mysession = setInterval(() => {
     session_minutes = m
     session_seconds = s
     document.getElementById('timer').innerHTML = `
-    <h4 id="minutes" class="display-4">30</h4>
-    <h4 id="separator" class="display-4">:</h4>
-    <h4 id="seconds" class="display-4">00</h4>
+    <h4 id="minutes" class="display-4 text-warning">30</h4>
+    <h4 id="separator" class="display-4 text-warning">:</h4>
+    <h4 id="seconds" class="display-4 text-warning">00</h4>
     `
     document.getElementById('startbtn').classList.add('d-none')
     document.getElementById('cancelbtn').classList.remove('d-none')
-    if (duration == '0:30:00' && ((server_begin_to_session_end - server_begin_to_now) < ((1 * 1800000) - 8000))) {
+    if (duration == '0:30:00' && ((server_begin_to_session_end - server_begin_to_now) < ((1 * 1800000) - 10000))) {
         document.getElementById('giveupbtn').classList.remove('d-none')
         document.getElementById('cancelbtn').classList.add('d-none')
     }
-    else if (duration == '1:00:00' && server_begin_to_session_end - server_begin_to_now < (2 * 1800000) - 8000) {
+    else if (duration == '1:00:00' && server_begin_to_session_end - server_begin_to_now < (2 * 1800000) - 10000) {
         document.getElementById('giveupbtn').classList.remove('d-none')
         document.getElementById('cancelbtn').classList.add('d-none')
     }
-    else if (duration == '1:30:00' && server_begin_to_session_end - server_begin_to_now < (3 * 1800000) - 8000) {
+    else if (duration == '1:30:00' && server_begin_to_session_end - server_begin_to_now < (3 * 1800000) - 10000) {
         document.getElementById('giveupbtn').classList.remove('d-none')
         document.getElementById('cancelbtn').classList.add('d-none')
     }
-    else if (duration == '2:00:00' && server_begin_to_session_end - server_begin_to_now < (4 * 1800000) - 8000) {
+    else if (duration == '2:00:00' && server_begin_to_session_end - server_begin_to_now < (4 * 1800000) - 10000) {
         document.getElementById('giveupbtn').classList.remove('d-none')
         document.getElementById('cancelbtn').classList.add('d-none')
     }
-    else if (duration == '2:30:00' && server_begin_to_session_end - server_begin_to_now < (5 * 1800000) - 8000) {
+    else if (duration == '2:30:00' && server_begin_to_session_end - server_begin_to_now < (5 * 1800000) - 10000) {
         document.getElementById('giveupbtn').classList.remove('d-none')
         document.getElementById('cancelbtn').classList.add('d-none')
     }
-    else if (duration == '3:00:00' && server_begin_to_session_end - server_begin_to_now < (6 * 1800000) - 8000) {
+    else if (duration == '3:00:00' && server_begin_to_session_end - server_begin_to_now < (6 * 1800000) - 10000) {
         document.getElementById('giveupbtn').classList.remove('d-none')
         document.getElementById('cancelbtn').classList.add('d-none')
     }
@@ -61,14 +61,14 @@ let mysession = setInterval(() => {
         document.getElementById('cancelbtn').classList.remove('d-none')
     }
     if (session_seconds % 2 == 0) {
-        document.getElementById('minutes').classList.add('yellow-text-timer')
-        document.getElementById('seconds').classList.add('yellow-text-timer')
-        document.getElementById('separator').classList.add('yellow-text-timer')
+        document.getElementById('minutes').classList.add('white-text-timer')
+        document.getElementById('seconds').classList.add('white-text-timer')
+        document.getElementById('separator').classList.add('white-text-timer')
     }
     else {
-        document.getElementById('minutes').classList.remove('yellow-text-timer')
-        document.getElementById('seconds').classList.remove('yellow-text-timer')
-        document.getElementById('separator').classList.remove('yellow-text-timer')
+        document.getElementById('minutes').classList.remove('white-text-timer')
+        document.getElementById('seconds').classList.remove('white-text-timer')
+        document.getElementById('separator').classList.remove('white-text-timer')
     }
     if (diff <= 0) {
         clearInterval(mysession)
