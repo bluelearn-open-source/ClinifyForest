@@ -105,8 +105,8 @@
 
 
 {% if loginuser.in_session %}
-<div id="session_end" class="d-none">{{loginuser.session_end_time|date:"M d, Y H:i:s"}}</div>
-<div id="session_duration" class="d-none">{{loginuser.session_end}}</div>
+<div id="session_end" class="">{{loginuser.session_end_time|date:"M d, Y H:i:s"}}</div>
+<div id="session_duration" class="">{{loginuser.session_end}}</div>
 <div id="audiosource" class="d-none">{% static 'main/b15.mp3' %}</div>
 {% endif %}
 
@@ -194,6 +194,7 @@ let mysession = setInterval(() => {
     const server_begin_to_now = new Date().getTime()
 
     let diff = server_begin_to_session_end - server_begin_to_now
+    console.log(diff)
 
     const m = Math.floor((server_begin_to_session_end / (1000 * 60)) - (server_begin_to_now / (1000 * 60)))
     const s = Math.floor(((server_begin_to_session_end / (1000)) - (server_begin_to_now / (1000))) % 60)
