@@ -170,8 +170,6 @@
     }
   }
 
-
-{% if loginuser.in_session %}
 function giveup() {
     document.getElementById('hidden').value = -1
     document.getrange.submit()
@@ -181,6 +179,7 @@ function canceltimer() {
     console.log(val)
     document.getrange.submit()
 }
+{% if loginuser.in_session %}
 duration = (document.getElementById('session_duration').textContent)
 document.getElementById('Mynavbar').classList.add('d-none')
 document.getElementById('range').classList.add('d-none')
