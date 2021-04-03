@@ -1,12 +1,50 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block title %}Home{% endblock title %}
 
 {% block homeactive %}active{% endblock homeactive %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'main/style.css' %}">
+<style>
+  .show_message {
+    display: block;
+  }
+
+  #timer {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 10px solid #ffc107;
+  }
+
+  input[type="range"]::-ms-thumb {
+    background: #ffc107 !important;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    background: #ffc107 !important;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    background: #ffc107 !important;
+  }
+
+  .white-text-timer {
+    color: #fff !important;
+  }
+
+  @media only screen and (max-width: 414px) {
+    #demotime {
+      font-size: 14px;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    #demotime {
+      font-size: 12px;
+    }
+  }
+</style>
 {% endblock style %}
 
 
@@ -105,9 +143,8 @@
 
 
 {% if loginuser.in_session %}
-<div id="session_end" class="">{{loginuser.session_end_time|date:"M d, Y H:i:s"}}</div>
-<div id="session_duration" class="">{{loginuser.session_end}}</div>
-<div id="audiosource" class="d-none">{% static 'main/b15.mp3' %}</div>
+<div id="session_end" class="d-none">{{loginuser.session_end_time|date:"M d, Y H:i:s"}}</div>
+<div id="session_duration" class="d-none">{{loginuser.session_end}}</div>
 {% endif %}
 
 
@@ -248,7 +285,7 @@ let mysession = setInterval(() => {
         document.getElementById("seconds").innerHTML = "00"
         document.getElementById("minutes").innerHTML = "00"
         document.getElementById('hidden').value = 0
-        link = document.getElementById('audiosource').textContent.slice(1)
+        link = 'https://ccnet.in/abhinav/test/wp-content/uploads/2021/04/y2mate.com-BELLS-b15-Sound-Effect-AudioTrimmer.com-3.mp3'
         new Audio(link).play()
         document.getElementById('treemodalbtn').click()
         setTimeout(function () { document.getrange.submit() }, 5000);

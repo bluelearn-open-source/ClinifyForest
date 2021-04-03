@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-{% load static %}
 
 <head>
     <!-- Required meta tags -->
@@ -13,7 +12,39 @@
     <link rel="shortcut icon"
         href="https://www.goodfreephotos.com/albums/vector-images/colorful-natural-tree-vector-clipart.png"
         type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .navbar .navbar-brand {
+    color: #ffc107;
+  }
+
+  .navbar .nav-item .nav-link {
+    color: #daab20;
+  }
+
+  .navbar .nav-item .nav-link:hover,
+  .navbar .navbar-brand:hover {
+    color: #ffc107;
+  }
+
+  .navbar .nav-item .nav-link:focus,
+  .navbar .navbar-brand:focus {
+    color: #ffc107;
+  }
+
+  .navbar .nav-item .active {
+    color: #ffc107 !important;
+  }
+
+  input[type="search"]:focus {
+    box-shadow: 0 1px 1px #ffc107 inset, 0 0 8px #ffc107;
+    outline: 0 none;
+    border-color: #ffc107;
+  }
+
+  .dropdown-item:active {
+    background-color: #ffc107 !important;
+  }
+    </style>
     {% block style %}{% endblock style %}
     <title>{% block title %}{% endblock title %}</title>
 </head>
@@ -168,15 +199,16 @@
     </div>
 
 
-
-    <script src="{% static 'script.js' %}"></script>
-
     {% block body %}{% endblock body %}
     {% block script %}{% endblock script %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
 
+    <script>
+        var time_spent = document.getElementById('treesOnProfile').innerHTML * 30
+        document.getElementById('time_spent').innerHTML = time_spent
+    </script>
 
 
 </body>
