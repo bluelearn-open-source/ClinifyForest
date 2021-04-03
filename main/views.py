@@ -40,7 +40,8 @@ def home(request):
             if (rangec > 0):
                 current_user.in_session = True
                 current_user.session_end = timedelta(seconds=(int(rangec)*30*60))
-                current_user.session_end_time = datetime.now() + current_user.session_end
+                tzcorrection = timedelta(seconds=((int(rangec)*30*60)+19800))
+                current_user.session_end_time = datetime.now() + tzcorrection
                 current_user.save()
                 return redirect(home)
     params = {}
