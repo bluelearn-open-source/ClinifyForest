@@ -7,38 +7,42 @@ from datetime import datetime, timedelta
 
 def home(request):
     if request.method=='POST':
-        rangec = request.POST['range']
-        hiddenval = request.POST['hidden']
-        hiddenval = int(hiddenval)
         current_user = DiscordUser.objects.get(discord_tag=request.user.discord_tag)
-        if (int(rangec) > 0):
-            current_user.is_session = True
-            current_user.session_end = timedelta(seconds=(int(rangec)*30*60))
-            current_user.session_end_time = datetime.now() + current_user.session_end
-            print(current_user.session_end_time)            
-
-            # current_user.current_session = 
-            # print(current_user.current_session)
-        
         prev_trees = current_user.trees
         prev_coins = current_user.coins
         prev_dead_trees = current_user.deadtrees
-        if (hiddenval < 0):
-            print("inside")
-            coins = 20*int(rangec)
-            new_dead_trees = int(prev_dead_trees) + int(rangec)
-            new_coins = int(prev_coins) - int(coins)
-            current_user.deadtrees = new_dead_trees
-            current_user.coins = new_coins
-            current_user.save()
-            return redirect(home)
-        coins = 25*int(rangec)
-        new_trees = int(prev_trees) + int(rangec)
-        new_coins = int(prev_coins) + int(coins)
-        current_user.trees = new_trees
-        current_user.coins = new_coins
-        current_user.save()
-        return redirect(home)
+        hiddenval = int(request.POST['hidden'])
+        rangec = int(request.POST['range'])
+        if (current_user.in_session == True):
+            current_user.in_session = False
+            current_user.session_end = None
+            current_user.session_end_time = None
+            if (hiddenval == -1):
+                coins = 20*int(rangec)
+                new_dead_trees = int(prev_dead_trees) + int(rangec)
+                new_coins = int(prev_coins) - int(coins)
+                current_user.deadtrees = new_dead_trees
+                current_user.coins = new_coins
+                current_user.save()
+                return redirect(home)
+            elif (hiddenval == 0):
+                coins = 25*int(rangec)
+                new_trees = int(prev_trees) + int(rangec)
+                new_coins = int(prev_coins) + int(coins)
+                current_user.trees = new_trees
+                current_user.coins = new_coins
+                current_user.save()
+                return redirect(home)
+            elif (hiddenval == 1):
+                current_user.save()
+                return redirect(home)
+        else:
+            if (rangec > 0):
+                current_user.in_session = True
+                current_user.session_end = timedelta(seconds=(int(rangec)*30*60))
+                current_user.session_end_time = datetime.now() + current_user.session_end
+                current_user.save()
+                return redirect(home)
     params = {}
     if request.user.is_authenticated:
         params = {'loginuser': request.user}

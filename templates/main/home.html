@@ -1,110 +1,73 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 
 {% block homeactive %}active{% endblock homeactive %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'main/style.css' %}">
+{% endblock style %}
+
+
+
 {% block body %}
-<style>
-  .show_message {
-    display: block;
-  }
 
-  #timer {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 10px solid #ffc107;
-  }
 
-  input[type="range"]::-ms-thumb {
-    background: #ffc107 !important;
-  }
-
-  input[type="range"]::-moz-range-thumb {
-    background: #ffc107 !important;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    background: #ffc107 !important;
-  }
-
-  .yellow-text-timer {
-    color: #ffc107;
-  }
-  @media only screen and (max-width: 414px) {
-    #demotime {
-      font-size: 14px;
-    }
-  }
-  @media only screen and (max-width: 375px) {
-    #demotime {
-      font-size: 12px;
-    }
-  }
-</style>
 <!-- Main Timer -->
-
-
 <div class="container px-5 d-flex justify-content-center align-items-center flex-column"
   style="height: calc(100vh - 60px);">
 
-  <strong id="demotime">30m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;180m</strong>
   <form action="/" method="post" name="getrange">
     {% csrf_token %}
-    <input type="range" value=1 onclick="checkr()" onchange="checkr()" id="range" style="width: 300px !important;" name="range" class="form-range" width="200px" min="1" max="6" id="customRange">
+    <input type="range" value=1 onclick="checkr()" onchange="checkr()" id="range" style="width: 300px !important;"
+      name="range" class="form-range" width="200px" min="1" max="6">
     <input type="hidden" name="hidden" id="hidden" value=0>
   </form>
 
 
-  <div class="card my-4 bg-warning" style="width: 24rem;">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item bg-warning text-center" id="treesinfo">plants 1 tree if fails 1 tree is died</li>
-      <li class="list-group-item bg-warning text-center" id="coinsinfo">gives 25 coins if fails 20 coins subtracted</li>
-    </ul>
+  <div>
+    <div class="text-center text-warning my-2 h6" id="treesinfo">Plants 1 tree if you fail, you kill a tree</div>
+    <div class="text-center text-warning my-2 h6" id="coinsinfo">
+      <div>Success: +25 coins</div>
+      <div>Failure: -20 coins</div>
+    </div>
   </div>
 
-
-  <div class="d-flex justify-content-center align-items-center" id=timer>
-    <h4 id="minutes" class="display-4">30</h4>
-    <h4 id="separator" class="display-4">:</h4>
-    <h4 id="seconds" class="display-4">00</h4>
+  <div class="d-flex justify-content-center align-items-center my-3" id="timer">
+    {% if loginuser.in_session %}
+    <div class="spinner-border text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    {% else %}
+    <h4 id="minutes" class="display-4 text-warning">30</h4>
+    <h4 id="separator" class="display-4 text-warning">:</h4>
+    <h4 id="seconds" class="display-4 text-warning">00</h4>
+    {% endif %}
   </div>
 
-  <div class="form-check form-switch mt-2">
-    <input class="form-check-input bg-warning" onclick="checkdf()" type="checkbox" id="deepfocus" checked>
-    <strong class="form-check-label" for="deepfocus">
-      Deep Focus
-    </strong>
-  </div>
-  <span id="dfwarn" class="text-center">(You will enter full screen mode and keyboard and mouse will be locked)<br>HIT
-    'space' to Give Up<br>
-    <span id="cancelinfo">HIT 'backspace' to Cancel</span></span>
-
+  <strong class="text-warning text-center h6">Deep Focus Mode Will be Back Soon</strong>
 
   {% if loginuser %}
-  <button class="btn btn-warning mt-2" id="startbtn" onclick="document.getrange.submit()">
+  <button class="btn btn-warning mt-3" id="startbtn" onclick="document.getrange.submit()">
     start
   </button>
-  <button class="btn btn-warning d-none mt-2" data-bs-toggle="modal" data-bs-target="#diedtreemodal" id="giveupbtn">
+  <button class="btn btn-warning d-none mt-3" data-bs-toggle="modal" data-bs-target="#diedtreemodal" id="giveupbtn">
     Giveup
   </button>
-  <button class="btn btn-secondary d-none mt-2" onclick="window.location.reload()" id="cancelbtn">
-    Cancel (9)
+  <button class="btn btn-secondary d-none mt-3" onclick="canceltimer()" id="cancelbtn">
+    Cancel
   </button>
   {% else %}
   <strong>Please Login to continue</strong>
   {% endif %}
-  <!-- Finished Message -->
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary d-none" id="btn_died_tree" data-bs-toggle="modal"
-  data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+
+
 
 <!-- Modal -->
-<div class="modal fade" id="diedtreemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="diedtreemodalLabel" aria-hidden="true">
+<div class="modal fade" id="diedtreemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="diedtreemodalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -117,9 +80,14 @@
     </div>
   </div>
 </div>
+
+
+
+
 <button class="btn btn-warning d-none mt-2" data-bs-toggle="modal" data-bs-target="#treemodal" id="treemodalbtn">
 </button>
-<div class="modal fade" id="treemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="treemodalLabel" aria-hidden="true">
+<div class="modal fade" id="treemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="treemodalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -134,17 +102,26 @@
     </div>
   </div>
 </div>
+
+
+{% if loginuser.in_session %}
+<div id="session_end" class="d-none">{{loginuser.session_end_time|date:"M d, Y H:i:s"}}</div>
+<div id="session_duration" class="d-none">{{loginuser.session_end}}</div>
+<div id="audiosource" class="d-none">{% static 'main/b15.mp3' %}</div>
+{% endif %}
+
+
+{% endblock body %}
+
+
+
+{% block script %}
+
+
+
 <script>
-  function checkdf() {
-    val = document.getElementById('deepfocus').checked
-    console.log(val)
-    if (val == true) {
-      document.getElementById("dfwarn").classList.remove('d-none')
-    }
-    else {
-      document.getElementById("dfwarn").classList.add('d-none')
-    }
-  }
+
+
   session_minutes = 30;
   session_seconds = "00";
   function checkr() {
@@ -153,140 +130,48 @@
       session_minutes = 30;
       session_seconds = "00";
       document.getElementById('minutes').innerHTML = session_minutes
-      document.getElementById('treesinfo').innerHTML = "plants 1 tree if fails 1 tree is died"
-      document.getElementById('coinsinfo').innerHTML = "gives 25 coins if fails 20 coins subtracted"
+      document.getElementById('treesinfo').innerHTML = "Plants 1 tree if you fail you kill a tree"
+      document.getElementById('coinsinfo').innerHTML = `<div>Success: +25 coins</div><div>Failure: -20 coins</div>`
     }
     else if (val == 2) {
       session_minutes = 60;
       session_seconds = "00";
       document.getElementById('minutes').innerHTML = session_minutes
-      document.getElementById('treesinfo').innerHTML = "plants 2 trees if fails 2 trees are died"
-      document.getElementById('coinsinfo').innerHTML = "gives 50 coins if fails 40 coins subtracted"
+      document.getElementById('treesinfo').innerHTML = "Plants 2 trees if you fail you kill two trees"
+      document.getElementById('coinsinfo').innerHTML = `<div>Success: +50 coins</div><div>Failure: -40 coins</div>`
     }
     else if (val == 3) {
       session_minutes = 90;
       session_seconds = "00";
       document.getElementById('minutes').innerHTML = session_minutes
-      document.getElementById('treesinfo').innerHTML = "plants 3 trees if fails 3 trees are died"
-      document.getElementById('coinsinfo').innerHTML = "gives 75 coins if fails 60 coins subtracted"
+      document.getElementById('treesinfo').innerHTML = "Plants 3 trees if you fail you kill three trees"
+      document.getElementById('coinsinfo').innerHTML = `<div>Success: +75 coins</div><div>Failure: -60 coins</div>`
     }
     else if (val == 4) {
       session_minutes = 120;
       session_seconds = "00";
       document.getElementById('minutes').innerHTML = session_minutes
-      document.getElementById('treesinfo').innerHTML = "plants 4 trees if fails 4 trees are died"
-      document.getElementById('coinsinfo').innerHTML = "gives 100 coins if fails 80 coins subtracted"
+      document.getElementById('treesinfo').innerHTML = "Plants 4 trees if you fail you kill four trees"
+      document.getElementById('coinsinfo').innerHTML = `<div>Success: +100 coins</div><div>Failure: -80 coins</div>`
     }
     else if (val == 5) {
       session_minutes = 150;
       session_seconds = "00";
       document.getElementById('minutes').innerHTML = session_minutes
-      document.getElementById('treesinfo').innerHTML = "plants 5 trees if fails 5 trees are died"
-      document.getElementById('coinsinfo').innerHTML = "gives 125 coins if fails 100 coins subtracted"
+      document.getElementById('treesinfo').innerHTML = "Plants 5 trees if you fail you kill five trees"
+      document.getElementById('coinsinfo').innerHTML = `<div>Success: +125 coins</div><div>Failure: -100 coins</div>`
     }
     else {
       session_minutes = 180;
       session_seconds = "00";
       document.getElementById('minutes').innerHTML = session_minutes
-      document.getElementById('treesinfo').innerHTML = "plants 6 trees if fails 6 trees are died"
-      document.getElementById('coinsinfo').innerHTML = "gives 150 coins if fails 120 coins subtracted"
+      document.getElementById('treesinfo').innerHTML = "Plants 6 trees if you fail you kill six trees"
+      document.getElementById('coinsinfo').innerHTML = `<div>Success: +150 coins</div><div>Failure: -120 coins</div>`
     }
   }
-
-  document.addEventListener('DOMContentLoaded', function template() {
-    document.getElementById("minutes").innerHTML = session_minutes;
-    document.getElementById("seconds").innerHTML = session_seconds;
-  });
-
-  function giveup() {
-    document.getElementById('hidden').value = -1
-    document.getrange.submit()
-    document.getElementById('startbtn').classList.remove('d-none')
-    document.getElementById('giveupbtn').classList.add('d-none')
-  }
-  function start_timer() {
-    document.getElementById('range').classList.add('d-none')
-    document.getElementById('demotime').classList.add('d-none')
-    document.getElementById('startbtn').classList.add('d-none')
-    document.getElementById('cancelbtn').classList.remove('d-none')
-    // document.getElementById('giveupbtn').classList.remove('d-none')
-    document.getElementById('Mynavbar').classList.add('d-none')
-    deepfocus = document.getElementById('deepfocus').checked
-    if (deepfocus == true) {
-      document.documentElement.requestFullscreen().catch((e) => {
-        console.log(e);
-      });
-      navigator.keyboard.lock([
-        "Backquote", "Backslash", "BracketLeft", "BracketRight", "Comma", "Digit0", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Equal", "IntlBackslash", "IntlRo", "IntlYen", "KeyA", "KeyB", "KeyC", "KeyD", "KeyE", "KeyF", "KeyG", "KeyH", "KeyI", "KeyJ", "KeyK", "KeyL", "KeyM", "KeyN", "KeyO", "KeyP", "KeyQ", "KeyR", "KeyS", "KeyT", "KeyU", "KeyV", "KeyW", "KeyX", "KeyY", "KeyZ", "Minus", "Period", "Quote", "Semicolon", "Slash", "AltLeft", "AltRight", "CapsLock", "ContextMenu", "ControlLeft", "ControlRight", "MetaLeft", "MetaRight", "ShiftLeft", "ShiftRight", "Tab", "Delete", "Backspace", "End", "Help", "Home", "Insert", "PageDown", "PageUp", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowUp", "NumLock", "Numpad0", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7", "Numpad8", "Numpad9", "NumpadAdd", "NumpadBackspace", "NumpadClear", "NumLock", "NumpadClearEntry", "NumpadComma", "NumpadDecimal", "NumpadDivide", "NumpadEnter", "NumpadEqual", "NumpadHash", "NumpadMemoryAdd", "NumpadMemoryClear", "NumpadMemoryRecall", "NumpadMemoryStore", "NumpadMemorySubtract", "NumpadMultiply", "NumpadStar", "NumpadParenLeft", "NumpadParenRight", "NumpadStar", "NumpadMultiply", "NumpadSubtract", "Escape", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "Fn", "FnLock", "PrintScreen", "ScrollLock", "Pause", "BrowserBack", "BrowserFavorites", "BrowserForward", "BrowserHome", "BrowserRefresh", "BrowserSearch", "BrowserStop", "Eject", "LaunchApp1", "LaunchApp2", "LaunchMail", "MediaPlayPause", "MediaSelect", "MediaStop", "MediaTrackNext", "MediaTrackPrevious", "Power", "Sleep", "AudioVolumeDown", "AudioVolumeMute", "AudioVolumeUp", "WakeUp"
-      ]);
-      document.body.requestPointerLock();
-    }
-    session_minutes = session_minutes - 1;
-    session_seconds = 59;
-    document.getElementById("minutes").innerHTML = session_minutes;
-    document.getElementById("seconds").innerHTML = session_seconds;
-    var minutes_interval = setInterval(minutesTimer, 60000);
-    var seconds_interval = setInterval(secondsTimer, 1000);
-    function minutesTimer() {
-      session_minutes = session_minutes - 1;
-      if (session_minutes < 10){
-        document.getElementById("minutes").innerHTML = "0" + session_minutes;
-      }
-      else{
-        document.getElementById("minutes").innerHTML = session_minutes;
-      }
-    }
-    i = 8
-    function secondsTimer() {
-      
-      if (i == 0) {
-        document.getElementById('giveupbtn').classList.remove('d-none')
-        document.getElementById('cancelbtn').classList.add('d-none')
-        document.getElementById('cancelinfo').classList.add('d-none')
-      }
-      document.getElementById('cancelbtn').innerHTML = "Cancel (" + i + ")"
-      i -= 1
-      session_seconds = session_seconds - 1;
-      if (session_seconds < 10){
-        document.getElementById("seconds").innerHTML = "0" + session_seconds;
-      }
-      else{
-        document.getElementById("seconds").innerHTML = session_seconds;
-      }
-      if (session_seconds % 2 == 0) {
-        document.getElementById('minutes').classList.add('yellow-text-timer')
-        document.getElementById('seconds').classList.add('yellow-text-timer')
-        document.getElementById('separator').classList.add('yellow-text-timer')
-      }
-      else {
-        document.getElementById('minutes').classList.remove('yellow-text-timer')
-        document.getElementById('seconds').classList.remove('yellow-text-timer')
-        document.getElementById('separator').classList.remove('yellow-text-timer')
-      }
-      if (session_seconds <= 0) {
-        if (session_minutes <= 0) {
-          clearInterval(minutes_interval);
-          clearInterval(seconds_interval);
-          document.getElementById('treemodalbtn').click()
-        }
-        session_seconds = 60;
-      }
-    }
-  }
-  document.body.onkeyup = function (e) {
-    if (e.keyCode == 32) {
-      giveup()
-    }
-    if (e.keyCode == 13) {
-      document.getElementById('treemodalsubmit').click()
-    }
-    if (e.keyCode == 8) {
-      document.getElementById('cancelbtn').click()
-    }
-  }
-  
-
-
 </script>
 
-{% endblock body %}
+{% if loginuser.in_session %}
+<script src="{% static 'main/script.js' %}"></script>
+{% endif %}
+{% endblock script %}
