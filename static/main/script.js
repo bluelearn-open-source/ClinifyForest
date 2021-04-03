@@ -75,7 +75,7 @@ let mysession = setInterval(() => {
         document.getElementById("seconds").innerHTML = "00"
         document.getElementById("minutes").innerHTML = "00"
         document.getElementById('hidden').value = 0
-        link = document.getElementById('audiosource').textContent
+        link = document.getElementById('audiosource').textContent.slice(1)
         new Audio(link).play()
         document.getElementById('treemodalbtn').click()
         setTimeout(function () { document.getrange.submit() }, 5000);
