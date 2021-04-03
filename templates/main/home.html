@@ -192,6 +192,8 @@ let mysession = setInterval(() => {
     server_begin_to_session_end = Date.parse(session_end)
 
     const server_begin_to_now = new Date().getTime()
+    console.log(server_begin_to_session_end)
+    console.log(server_begin_to_now)
 
     let diff = server_begin_to_session_end - server_begin_to_now
     console.log(diff)
