@@ -89,9 +89,12 @@
                                 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                                 {% if loginuser.avatar %}
                                 <img src="https://cdn.discordapp.com/avatars/{{loginuser.id}}/{{loginuser.avatar}}.png"
-                                    width="28px" style="border-radius: 50%;">{% else %}<img
+                                    width="28px" style="border-radius: 50%;">
+                                {% else %}
+                                <img
                                     src="https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png" width="28px"
-                                    style="border-radius: 50%;">{% endif %}
+                                    style="border-radius: 50%;">
+                                {% endif %}
                                     &nbsp;&nbsp;<strong>{{loginuser.discord_tag}}</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end"
@@ -145,8 +148,7 @@
                         <div class="col-md-3 d-flex align-items-center justify-content-center mt-3 mt-md-0">
                             {% if loginuser.avatar %}
                             <img src="https://cdn.discordapp.com/avatars/{{loginuser.id}}/{{loginuser.avatar}}.png"
-                                style="border-radius: 50%; border: 2px solid rgba(0,0,0,.125);" width="160px">{% else
-                            %}<img src="https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
+                                style="border-radius: 50%; border: 2px solid rgba(0,0,0,.125);" width="160px">{% else %}<img src="https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
                                 style="border-radius: 50%;" width="160px">{% endif %}
                         </div>
                         <div class="col-md-9">
