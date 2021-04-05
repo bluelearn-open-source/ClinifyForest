@@ -154,6 +154,8 @@ Prequisites
    DEBUG = True
    TEMPLATE_DEBUG = True
    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
+   
+   TZC = 0
    ```
    * save `local_settings.py`
 9. Make migrations
