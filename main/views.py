@@ -44,9 +44,10 @@ def home(request):
             if (rangec > 0):
                 current_user.in_session = True
                 current_user.session_end = timedelta(seconds=(int(rangec)*30*60))
-                if TZC == 0:
-                    tzcorrection = timedelta(seconds=((int(rangec)*30*60)))
-                else:
+                try:
+                    if TZC == 0:
+                        tzcorrection = timedelta(seconds=((int(rangec)*30*60)))
+                except:
                     tzcorrection = timedelta(seconds=((int(rangec)*30*60) + 19800))
                 current_user.session_end_time = datetime.now() + tzcorrection
                 current_user.save()
