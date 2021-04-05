@@ -3,6 +3,10 @@ from django.shortcuts import render, redirect
 from login.models import DiscordUser
 import os
 from datetime import datetime, timedelta
+try:
+    from ClinifyForest.local_settings import TZC
+except:
+    pass
 # Create your views here.
 
 def home(request):
@@ -40,7 +44,10 @@ def home(request):
             if (rangec > 0):
                 current_user.in_session = True
                 current_user.session_end = timedelta(seconds=(int(rangec)*30*60))
-                tzcorrection = timedelta(seconds=((int(rangec)*30*60)+19800))
+                if TZC == 0:
+                    tzcorrection = timedelta(seconds=((int(rangec)*30*60)))
+                else:
+                    tzcorrection = timedelta(seconds=((int(rangec)*30*60) + 19800))
                 current_user.session_end_time = datetime.now() + tzcorrection
                 current_user.save()
                 return redirect(home)
