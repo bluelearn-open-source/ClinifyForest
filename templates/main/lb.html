@@ -7,9 +7,38 @@
 {% block body %}
 <div class="container py-3">
     {% for user in users %}
+    {% if user.gonna_plant_tree %}
+
+    <div class="card text-dark bg-warning my-2">
+        <div class="card-header">
+            {% if user.avatar %}
+            <img src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}.png" style="border-radius: 50%;"
+                width="40px">
+            {% else %}
+            <img src="https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png" style="border-radius: 50%;"
+                width="40px">
+            {% endif %}
+            <strong class="mx-2">{{user.discord_tag}}</strong>
+        </div>
+        <div class="card-body">
+            Help <strong>{{user.discord_tag}}</strong> to complete total {{trfprt}} tree target and
+                <strong>{{user.discord_tag}}</strong> will plant a real tree.<br>
+                <strong>Current ClinifyTrees: {{current_trees}}</strong>
+                <strong>Tree Plant On: {{user.gonna_plant_tree_on}} trees</strong>
+                <div class="progress my-3 mb-0">
+                    <div class="progress-bar bg-success" id="progress" role="progressbar" aria-valuenow="{{current_trees}}"
+                        aria-valuemin="0" aria-valuemax="{{user.gonna_plant_tree_on}}">{{current_trees}}</div>
+                </div>
+        </div>
+      </div>
+
+    {% endif %}
+    {% endfor %}
+
+    {% for user in users %}
     <div class="card text-dark bg-warning my-3">
         <div class="card-header">
-            <strong class="display-4">#{{forloop.counter}}</strong>  <strong>{{user.discord_tag}}</strong>
+            <strong class="display-4">#{{forloop.counter}}</strong> <strong>{{user.discord_tag}}</strong>
         </div>
         <div class="card-body">
             <div class="row">
@@ -36,7 +65,13 @@
             </div>
         </div>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
 
+<script>
+    persentct = ( {{current_trees}}/{{trfprt}} ) * 100
+    document.getElementById('progress').style.width = persentct + "%"
+</script>
+
 {% endblock body %}
+

@@ -6,8 +6,28 @@
 
 {% block body %}
 
-<div class="container d-flex justify-content-center align-items-center" style="height: 90.5vh;">
-    <h1 class="display-1 text-warning">Coming Soon</h1>
+<div class="container my-5 px-5">
+    {% for storeitem in store %}
+    <div class="card text-center bg-warning my-3 mx-5">
+        <div class="card-body">
+            <h5 class="card-title">{{storeitem.item_name}}</h5>
+            <p class="card-text">{{storeitem.item_desc}}</p>
+            Only for <strong>{{storeitem.item_price}} coins</strong>
+        </div>
+        <div class="card-footer">
+            <form action="/store" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="hidden" id="hidden" value='{{storeitem.item_name}}'>
+                {% if loginuser.coins < storeitem.item_price %}
+                <button class="btn btn-success" type="submit">Purchase</button>
+                {% else %}
+                Earn more coins to purchase
+                {% endif %}
+
+            </form>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock body %}

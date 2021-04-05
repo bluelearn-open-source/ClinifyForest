@@ -17,7 +17,8 @@ class DiscordUser(models.Model):
     in_session = models.BooleanField(default=False)
     session_end = models.DurationField(blank=True, null=True)
     session_end_time = models.DateTimeField(blank=True, null=True)
-    
+    gonna_plant_tree = models.BooleanField(default=False)
+    gonna_plant_tree_on = models.IntegerField(default=0)
     public_flags = models.IntegerField()
     flags = models.IntegerField()
     locale = models.CharField(max_length=100)
