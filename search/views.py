@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from login.models import DiscordUser
+from main.views import home
 
 # Create your views here.
 def search(request):
+    if request.user.in_session:
+        return redirect(home)
     if request.GET:
         query = request.GET['q']
     if len(query)>60 or len(query)<3:
