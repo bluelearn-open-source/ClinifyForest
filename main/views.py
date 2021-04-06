@@ -59,8 +59,6 @@ def home(request):
     return render(request, 'main/home.html', params)
 
 def lb(request):
-    if request.user.in_session:
-        return redirect(home)
     users = DiscordUser.objects.order_by('-trees', 'deadtrees').all()
     params = {'users': users}
     if request.user.is_authenticated:
@@ -68,8 +66,6 @@ def lb(request):
     return render(request, 'main/lb.html', params)
 
 def store(request):
-    if request.user.in_session:
-        return redirect(home)
     if request.method=='POST':
         hidden = request.POST['hidden']
         if hidden == "Room Access":
@@ -97,8 +93,6 @@ def store(request):
     return render(request, 'main/store.html', params)
 
 def reset(request):
-    if request.user.in_session:
-        return redirect(home)
     if request.user.is_authenticated:
         current_user = DiscordUser.objects.get(discord_tag=request.user.discord_tag)
         current_user.trees = 0
