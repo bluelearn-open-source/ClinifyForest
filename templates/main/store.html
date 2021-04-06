@@ -4,18 +4,37 @@
 
 {% block stactive %}active{% endblock stactive %}
 
+{% block style %}
+<style>
+    #card{
+        width: 30%;
+    }
+    @media only screen and (max-width: 994px) {
+        #card {
+            width: 45%;
+        }
+    }
+    @media only screen and (max-width: 758px) {
+        #card {
+            width: 90%;
+        }
+    }
+</style>
+{% endblock style %}
+
 {% block body %}
 
 <div class="container">
+    <h1 class="text-warning text-center mt-5">Store</h1>
     <div class="row my-5">
         <h2 class="text-white">One Time Purchase</h2>
         {% for storeitem in store %}
         {% if storeitem.category == 1 %}
-        <div class="card border-success bg-warning m-3" style="max-width: 30%;">
+        <div class="card border-success bg-warning m-3" id="card">
             <div class="card-header h3 border-success">{{storeitem.item_name}}</div>
             <div class="card-body text-success">
-                <h5 class="card-title">for {{storeitem.item_price}} coins</h5>
-                <p class="card-text">{{storeitem.item_desc}}</p>
+                <h5 class="card-title fw-bold">for {{storeitem.item_price}} coins</h5>
+                <p class="card-text text-dark">{{storeitem.item_desc}}</p>
             </div>
             <div class="card-footer bg-transparent border-success">
                 {% if storeitem.item_name == 'Room Access' %}
@@ -56,11 +75,11 @@
         <h2 class="text-white">Upgrade Yourself</h2>
         {% for storeitem in store %}
         {% if storeitem.category == 0 %}
-        <div class="card border-success bg-warning m-3" style="max-width: 30%;">
+        <div class="card border-success bg-warning m-3" id="card">
             <div class="card-header h3 border-success">{{storeitem.item_name}}</div>
             <div class="card-body text-success">
-                <h5 class="card-title">for {{storeitem.item_price}} coins</h5>
-                <p class="card-text">{{storeitem.item_desc}}</p>
+                <h5 class="card-title fw-bold">for {{storeitem.item_price}} coins</h5>
+                <p class="card-text text-dark">{{storeitem.item_desc}}</p>
             </div>
             <div class="card-footer bg-transparent border-success">
             {% if storeitem.item_name == 'Water Your Trees' %}
@@ -75,7 +94,7 @@
                     {% endif %}
                 </form>
                 {% else %}
-                You already have zero dead trees
+                You have no dead trees
                 {% endif %}
             {% endif %}
             </div>

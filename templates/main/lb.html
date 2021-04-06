@@ -5,12 +5,13 @@
 {% block lbactive %}active{% endblock lbactive %}
 
 {% block body %}
-<div class="container py-3">
-
+<div class="container mb-5">
+    <h1 class="text-warning text-center my-5">Leader Board</h1>
     {% for user in users %}
     <div class="card text-dark bg-warning my-3">
         <div class="card-header">
-            <strong class="display-4">#{{forloop.counter}}</strong> <strong>{{user.discord_tag}}</strong>
+            <strong class="display-4">#{{forloop.counter}}</strong> <strong>{{user.discord_tag}}</strong><br>
+            <span class="badge bg-success">Study Buddies</span>
             {% if user.room_access %}<span class="badge bg-success">Room Access</span>{% endif %}
             {% if user.room_admin %}<span class="badge bg-success">Room Admin</span>{% endif %}
         </div>

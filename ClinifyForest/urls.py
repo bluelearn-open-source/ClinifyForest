@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from main.views import home, lb, store, reset
+from main.views import home, lb, store, reset, rooms
 from login.views import discord_logout, discord_login, discord_login_redirect
 from search.views import search
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('', home, name="home"),
     path('leaderboard', lb, name="lb"),
     path('store', store, name="store"),
+    path('rooms', rooms, name="rooms"),
     path('reset', reset, name="reset"),
     path('search', search, name="search"),
     path('login', discord_login, name='discord_login'),

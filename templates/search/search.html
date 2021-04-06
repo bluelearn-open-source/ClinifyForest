@@ -11,6 +11,9 @@
     <div class="card text-dark bg-warning my-3">
         <div class="card-header">
             <strong>{{user.discord_tag}}</strong>
+            <span class="badge bg-success">Study Buddies</span>
+            {% if user.room_access %}<span class="badge bg-success">Room Access</span>{% endif %}
+            {% if user.room_admin %}<span class="badge bg-success">Room Admin</span>{% endif %}
         </div>
         <div class="card-body">
             <div class="row">

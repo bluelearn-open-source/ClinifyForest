@@ -70,12 +70,12 @@ def store(request):
         hidden = request.POST['hidden']
         if hidden == "Room Access":
             request.user.room_access = True
-            request.user.coins -= 500
+            request.user.coins -= 199
             request.user.save()
             return redirect(store)
         if hidden == "Room Admin":
             request.user.room_admin = True
-            request.user.coins -= 2000
+            request.user.coins -= 999
             request.user.save()
             return redirect(store)
         if hidden == "Water Your Trees":
@@ -83,7 +83,7 @@ def store(request):
                 return redirect(store)
             request.user.deadtrees -= 1
             request.user.trees += 1
-            request.user.coins -= 500
+            request.user.coins -= 299
             request.user.save()
             return redirect(store)
     storeitems = Store.objects.all()
@@ -99,4 +99,14 @@ def reset(request):
         current_user.deadtrees = 0
         current_user.coins = 0
         current_user.save()
+    return redirect(home)
+
+
+def rooms(request):
+    params = {}
+    if request.user.is_authenticated:
+        params = {'loginuser': request.user}
+        if request.user.room_access:
+            return render(request, 'main/rooms.html', params)
+        return redirect(home)
     return redirect(home)

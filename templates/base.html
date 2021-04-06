@@ -64,6 +64,11 @@
                         <a class="nav-link {% block homeactive %}{% endblock homeactive %}" aria-current="page"
                             href="/">Home</a>
                     </li>
+                    {% if request.user.room_access %}
+                    <li class="nav-item ">
+                        <a class="nav-link {% block roomactive %}{% endblock roomactive %}" href="/rooms">Rooms</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item ">
                         <a class="nav-link {% block lbactive %}{% endblock lbactive %}"
                             href="/leaderboard">Leaderboard</a>
@@ -99,18 +104,16 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end"
                                 aria-labelledby="navbarDarkDropdownMenuLink">
-                                {% if request.user.room_access %}
                                 <li>
-                                    <span
-                                            class="badge bg-secondary">Room Access</span>
+                                    <h4 class="dropdown-header">Badges <br><br>
+                                    <span class="badge bg-success mt-1">Study Buddies</span><br>
+                                    {% if request.user.room_access %}<span class="badge bg-success mt-1">Room Access</span>{% endif %} 
+                                    {% if request.user.room_admin %}<span class="badge bg-success mt-1">Room Admin</span>{% endif %}
+                                    </h4>
                                 </li>
-                                {% endif %}
-                                {% if request.user.room_admin %}
                                 <li>
-                                    <span
-                                            class="badge bg-secondary">Room Admin</span>
+                                    <hr class="dropdown-divider">
                                 </li>
-                                {% endif %}
                                 <li>
                                     <h4 class="dropdown-header text-success">Trees <span
                                             class="badge bg-success">{{loginuser.trees}}</span></h4>
