@@ -1,6 +1,7 @@
 from django.db.models.fields import DateTimeField
 from django.shortcuts import render, redirect
 from login.models import DiscordUser
+from .models import Store
 import os
 from datetime import datetime, timedelta
 try:
@@ -65,9 +66,30 @@ def lb(request):
     return render(request, 'main/lb.html', params)
 
 def store(request):
-    params = {}
+    if request.method=='POST':
+        hidden = request.POST['hidden']
+        if hidden == "Room Access":
+            request.user.room_access = True
+            request.user.coins -= 500
+            request.user.save()
+            return redirect(store)
+        if hidden == "Room Admin":
+            request.user.room_admin = True
+            request.user.coins -= 2000
+            request.user.save()
+            return redirect(store)
+        if hidden == "Water Your Trees":
+            if request.user.deadtrees == 0:
+                return redirect(store)
+            request.user.deadtrees -= 1
+            request.user.trees += 1
+            request.user.coins -= 500
+            request.user.save()
+            return redirect(store)
+    storeitems = Store.objects.all()
+    params = {'store': storeitems}
     if request.user.is_authenticated:
-        params = {'loginuser': request.user}
+        params = {'loginuser': request.user, 'store': storeitems}
     return render(request, 'main/store.html', params)
 
 def reset(request):
