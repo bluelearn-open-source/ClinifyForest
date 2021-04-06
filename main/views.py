@@ -1,9 +1,12 @@
 from django.db.models.fields import DateTimeField
 from django.shortcuts import render, redirect
 from login.models import DiscordUser
-from .models import Store
 import os
 from datetime import datetime, timedelta
+try:
+    from ClinifyForest.local_settings import TZC
+except:
+    pass
 # Create your views here.
 
 def home(request):
@@ -41,7 +44,11 @@ def home(request):
             if (rangec > 0):
                 current_user.in_session = True
                 current_user.session_end = timedelta(seconds=(int(rangec)*30*60))
-                tzcorrection = timedelta(seconds=((int(rangec)*30*60)))
+                try:
+                    if TZC == 0:
+                        tzcorrection = timedelta(seconds=((int(rangec)*30*60)))
+                except:
+                    tzcorrection = timedelta(seconds=((int(rangec)*30*60) + 19800))
                 current_user.session_end_time = datetime.now() + tzcorrection
                 current_user.save()
                 return redirect(home)
@@ -52,33 +59,15 @@ def home(request):
 
 def lb(request):
     users = DiscordUser.objects.order_by('-trees', 'deadtrees').all()
-    current_trees = 0
-    for user in users:
-        current_trees += user.trees
-    params = { 'trfprt': 1000, 'users': users, 'current_trees': current_trees }
+    params = {'users': users}
     if request.user.is_authenticated:
-        params = {'loginuser': request.user, 'users': users, 'trfprt': 1000, 'current_trees': current_trees}
+        params = {'loginuser': request.user, 'users': users}
     return render(request, 'main/lb.html', params)
 
 def store(request):
-    storeitems = Store.objects.all()
-    if request.method=='POST':
-        users = DiscordUser.objects.order_by('-trees', 'deadtrees').all()
-        current_trees = 0
-        for user in users:
-            current_trees += user.trees
-        hiddenval = request.POST['hidden']
-        item = Store.objects.get(item_name=hiddenval)
-        if (item.item_name == "Plant a Real Tree"):
-            request.user.gonna_plant_tree = True
-            print(request.user.gonna_plant_tree)
-            request.user.coins = request.user.coins - 1000
-            request.user.gonna_plant_tree_on = 1000 + current_trees
-            request.user.save()
-            return redirect(store)
-    params = { 'store': storeitems }
+    params = {}
     if request.user.is_authenticated:
-        params = {'loginuser': request.user, 'store': storeitems}
+        params = {'loginuser': request.user}
     return render(request, 'main/store.html', params)
 
 def reset(request):
