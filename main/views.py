@@ -31,11 +31,17 @@ def home(request):
                 current_user.save()
                 return redirect(home)
             elif (hiddenval == 0):
+                if request.user.slowmode == True:
+                    coins = 10*int(rangec)
+                    new_coins = int(prev_coins) + int(coins)
+                    current_user.coins = new_coins
+                    current_user.save()
+                    return redirect(home)
                 coins = 25*int(rangec)
-                new_trees = int(prev_trees) + int(rangec)
                 new_coins = int(prev_coins) + int(coins)
-                current_user.trees = new_trees
                 current_user.coins = new_coins
+                new_trees = int(prev_trees) + int(rangec)
+                current_user.trees = new_trees
                 current_user.save()
                 return redirect(home)
             elif (hiddenval == 1):
