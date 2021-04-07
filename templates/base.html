@@ -106,9 +106,10 @@
                                 aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li>
                                     <h4 class="dropdown-header">Badges <br><br>
-                                    <span class="badge bg-success mt-1">Study Buddies</span><br>
-                                    {% if request.user.room_access %}<span class="badge bg-success mt-1">Room Access</span>{% endif %} 
-                                    {% if request.user.room_admin %}<span class="badge bg-success mt-1">Room Admin</span>{% endif %}
+                                    <span class="badge bg-dark mt-1">Study Buddies</span><br>
+                                    {% if request.user.room_access %}<span class="badge bg-danger mt-1">Room Access</span>{% endif %} 
+                                    {% if request.user.room_admin %}<span class="badge bg-secondary mt-1">Room Admin</span>{% endif %}
+                                    {% if user.slowmode %}<br><span class="badge bg-primary mt-1">Slowmode Enabled</span>{% endif %}
                                     </h4>
                                 </li>
                                 <li>

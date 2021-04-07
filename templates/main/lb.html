@@ -11,9 +11,10 @@
     <div class="card text-dark bg-warning my-3">
         <div class="card-header">
             <strong class="display-4">#{{forloop.counter}}</strong> <strong>{{user.discord_tag}}</strong><br>
-            <span class="badge bg-success">Study Buddies</span>
-            {% if user.room_access %}<span class="badge bg-success">Room Access</span>{% endif %}
-            {% if user.room_admin %}<span class="badge bg-success">Room Admin</span>{% endif %}
+            <span class="badge bg-dark">Study Buddies</span>
+            {% if user.room_access %}<span class="badge bg-danger">Room Access</span>{% endif %}
+            {% if user.room_admin %}<span class="badge bg-secondary">Room Admin</span>{% endif %}
+            {% if user.slowmode %}<span class="badge bg-primary">Slowmode Enabled</span>{% endif %}
         </div>
         <div class="card-body">
             <div class="row">
