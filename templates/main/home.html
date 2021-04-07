@@ -56,6 +56,12 @@
 <div class="container px-5 d-flex justify-content-center align-items-center flex-column"
   style="height: calc(100vh - 60px);">
 
+{% if request.user.slowmode %}
+<h4 class="text-white text-center">You are now kept on slowmode to encourage others plant more trees</h1>
+<h5 class="text-warning text-center">Come back (maybe tomorrow) to plant more</h2>
+<h6 class="text-white text-center">Don't tell us if we have made any mistake</h2>
+{% else %}
+
   <form action="/" method="post" name="getrange">
     {% csrf_token %}
     <input type="range" value=1 onclick="checkr()" onchange="checkr()" id="range" style="width: 300px !important;"
@@ -147,7 +153,7 @@
 <div id="session_duration" class="d-none">{{loginuser.session_end}}</div>
 {% endif %}
 
-
+{% endif %}
 {% endblock body %}
 
 

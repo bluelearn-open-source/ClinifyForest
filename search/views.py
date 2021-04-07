@@ -8,7 +8,7 @@ def search(request):
         return redirect(home)
     if request.GET:
         query = request.GET['q']
-    if len(query)>60 or len(query)<3:
+    if len(query)>60 or len(query)<1:
         users = DiscordUser.objects.none()
     else:
         users = DiscordUser.objects.filter(discord_tag__icontains=query)
