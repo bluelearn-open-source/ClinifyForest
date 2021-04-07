@@ -47,10 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'channels',
     'main.apps.MainConfig',
     'login.apps.LoginConfig',
     'search.apps.SearchConfig',
+    'rooms.apps.RoomsConfig',
 ]
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -86,6 +87,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ClinifyForest.wsgi.application'
 
+ASGI_APPLICATION = 'ClinifyForest.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

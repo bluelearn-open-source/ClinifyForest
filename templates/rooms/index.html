@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Rooms{% endblock title %}
+
+{% block roomactive %}active{% endblock roomactive %}
+
+{% block body %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center mb-5">
+
+  <h1 class="text-warning text-center my-5 align-right">Study Rooms</h1>
+  <div class="row ">
+    <h2 class="text-white">Ready Made Rooms</h2>
+    <div class="col-sm-4">
+      <div class="card mt-2 bg-warning">
+        <div class="card-body">
+          <h5 class="card-title">Padhai Moment</h5>
+          <p class="card-text">No admin needed. Auto starting sessions of 30 minutes with a break of 10 minutes. chat is enabled during the break only</p>
+          <a href="#" class="btn btn-success">Enter</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card mt-2 bg-warning">
+        <div class="card-body">
+          <h5 class="card-title">Coding Shoding</h5>
+          <p class="card-text">Admin needed to start and set duration of the session. chat is enabled only when session isn't started.</p>
+          <a href="#" class="btn btn-success">Enter</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card mt-2 bg-warning">
+        <div class="card-body">
+          <h5 class="card-title">Chamber of Secrets</h5>
+          <p class="card-text">Admins only room. chat is enabled during the session also. emojis also enabled in the chat</p>
+          <a href="#" class="btn btn-success">Enter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mt-5">
+    <div class="col-12" >
+      <div class="d-flex justify-content-center align-items-center">
+        <h1 class="display-6 text-warning mt-5">Custom Rooms Comming Soon</h1>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock body %}
