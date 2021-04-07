@@ -164,6 +164,8 @@ Prequisites
    ```
    ```sh
    python manage.py sqlmigrate login 0001
+   python manage.py sqlmigrate main 0001
+   python manage.py sqlmigrate search 0001
    ```
    ```sh
    python manage.py migrate
