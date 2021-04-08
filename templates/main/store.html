@@ -72,7 +72,7 @@
         {% endfor %}
     </div>
     <div class="row my-5">
-        <h2 class="text-white">Upgrade Yourself</h2>
+        <h2 class="text-white">Just Buy</h2>
         {% for storeitem in store %}
         {% if storeitem.category == 0 %}
         <div class="card border-success bg-warning m-3" id="card">
@@ -95,6 +95,12 @@
                     {% endif %}
                 {% else %}
                 You have no dead trees
+                {% endif %}
+            {% else %}
+                {% if request.user.coins >= storeitem.item_price %}
+                    <a class="btn btn-success" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy Now</a>
+                {% else %}
+                    <a class="btn btn-success" href="/">Earn More</a>
                 {% endif %}
             {% endif %}
             </div>
