@@ -137,6 +137,8 @@
                                 </li>
                                 <li><a class="dropdown-item" style="cursor: pointer;" data-bs-toggle="modal"
                                         data-bs-target="#resetmodal">Reset Profile</a></li>
+                                <li><a class="dropdown-item" style="cursor: pointer;" data-bs-toggle="modal"
+                                        data-bs-target="#updatemodal">Update</a></li>
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
                         </li>
@@ -211,6 +213,27 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <a class="btn btn-success" href="/reset">Yes, Reset</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update  Modal -->
+    <div class="modal fade" id="updatemodal" tabindex="-1" aria-labelledby="updatemodalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updatemodalLabel">Update Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Updating your profile wil change and update your profile picture and discord username to what you have recently set on Discord.<br>
+                    You will be logged out and hence kindly login again to see reflected changes.<br>
+                    This process is irreversible.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a class="btn btn-success" href="/logout">Yes, Update</a>
                 </div>
             </div>
         </div>
