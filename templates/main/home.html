@@ -225,6 +225,7 @@ document.getElementById('Mynavbar').classList.add('d-none')
 document.getElementById('range').classList.add('d-none')
 document.getElementById('startbtn').classList.add('disabled')
 
+link = 'https://ccnet.in/abhinav/test/wp-content/uploads/2021/04/y2mate.com-BELLS-b15-Sound-Effect-AudioTrimmer.com-3.mp3'
 
 let mysession = setInterval(() => {
     if (duration == '0:30:00') {
@@ -323,23 +324,27 @@ let mysession = setInterval(() => {
         document.getElementById("seconds").innerHTML = "00"
         document.getElementById("minutes").innerHTML = "00"
         document.getElementById('hidden').value = 0
-        link = 'https://ccnet.in/abhinav/test/wp-content/uploads/2021/04/y2mate.com-BELLS-b15-Sound-Effect-AudioTrimmer.com-3.mp3'
         new Audio(link).play()
+        document.title = "Tree Planted"
         document.getElementById('treemodalbtn').click()
         setTimeout(function () { document.getrange.submit() }, 5000);
     }
     else {
         if (session_seconds < 10) {
             document.getElementById("seconds").innerHTML = "0" + session_seconds;
+            document.title = "Tree Growing - " + session_minutes + ":0" + session_seconds
         }
         else {
             document.getElementById("seconds").innerHTML = session_seconds;
+            document.title = "Tree Growing - " + session_minutes + ":" + session_seconds
         }
         if (session_minutes < 10) {
             document.getElementById("minutes").innerHTML = "0" + session_minutes;
+            document.title = "Tree Growing - 0" + session_minutes + ":" + session_seconds
         }
         else {
             document.getElementById("minutes").innerHTML = session_minutes;
+            document.title = "Tree Growing - " + session_minutes + ":" + session_seconds
         }
     }
 
