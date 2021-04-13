@@ -9,7 +9,7 @@ class DiscordUser(models.Model):
     id = models.BigIntegerField(primary_key=True ,unique=True)
     discord_tag = models.CharField(max_length=100)
     avatar = models.CharField(null=True, max_length=100, blank=True)
-    
+
     coins = models.IntegerField(default=0)
     trees = models.IntegerField(default=0)
     deadtrees = models.IntegerField(default=0)
