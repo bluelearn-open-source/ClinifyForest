@@ -106,13 +106,3 @@ def reset(request):
         current_user.coins = 0
         current_user.save()
     return redirect(home)
-
-
-def rooms(request):
-    params = {}
-    if request.user.is_authenticated:
-        params = {'loginuser': request.user}
-        if request.user.room_access:
-            return render(request, 'main/rooms.html', params)
-        return redirect(home)
-    return redirect(home)
