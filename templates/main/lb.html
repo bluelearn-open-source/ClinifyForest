@@ -15,7 +15,7 @@
             {% if user.room_access %}<span class="badge bg-danger">Room Access</span>{% endif %}
             {% if user.room_admin %}<span class="badge bg-secondary">Room Admin</span>{% endif %}
             {% if user.slowmode %}<span class="badge bg-primary">Slowmode Enabled</span>{% endif %}
-            <span class="badge bg-success mt-1">Level {{request.user.level}}</span>
+            <span class="badge bg-success mt-1">Level {{user.level}}</span>
         </div>
         <div class="card-body">
             <div class="row">
