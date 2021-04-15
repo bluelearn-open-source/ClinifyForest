@@ -16,10 +16,10 @@
             {% if user.room_admin %}<span class="badge bg-secondary">Room Admin</span>{% endif %}
             {% if user.slowmode %}<span class="badge bg-primary">Slowmode Enabled</span>{% endif %}
             {% if user.trees > 0 %}<span class="badge bg-danger mt-1">Level 1</span>{% endif %}
-            {% if user.trees >= 50 %}<span class="badge bg-warning mt-1">Level 2</span>{% endif %}
+            {% if user.trees >= 50 %}<span class="badge bg-primary mt-1">Level 2</span>{% endif %}
             {% if user.trees >= 100 %}<span class="badge bg-success mt-1">Level 3</span>{% endif %}
             {% if user.trees >= 150 %}<span class="badge bg-secondary mt-1">Level 4</span>{% endif %}
-            {% if user.trees >= 200 %}<span class="badge bg-black mt-1">Level 5</span>{% endif %}
+            {% if user.trees >= 200 %}<span class="badge bg-dark mt-1">Level 5</span>{% endif %}
             {% if user.trees >= 250 %}<span class="badge bg-primary mt-1">Level 6</span>{% endif %}
         </div>
         <div class="card-body">
