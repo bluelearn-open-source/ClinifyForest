@@ -110,7 +110,7 @@
                                     {% if request.user.room_access %}<span class="badge bg-danger mt-1">Room Access</span>{% endif %} 
                                     {% if request.user.room_admin %}<span class="badge bg-secondary mt-1">Room Admin</span>{% endif %}
                                     {% if user.slowmode %}<br><span class="badge bg-primary mt-1">Slowmode Enabled</span>{% endif %}
-                                    <span class="badge bg-success mt-1">Level {{request.user.level}}</span>
+                                    <br><span class="badge bg-success mt-1">Level {{request.user.level}}</span>
                                     </h4>
                                 </li>
                                 <li>
