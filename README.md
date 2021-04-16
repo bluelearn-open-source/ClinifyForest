@@ -176,6 +176,11 @@ Prequisites
     ```
     And You are good to go
     Now visit [localhost:8000](http://127.0.0.1:8000)
+    
+11. Create Super User
+    ```sh
+    python manage.py createsuperuser
+    ```
    
 
 
