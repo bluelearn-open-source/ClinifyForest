@@ -6,16 +6,14 @@
 
 {% block style %}
 <style>
-    #card {
+    #card{
         width: 30%;
     }
-
     @media only screen and (max-width: 994px) {
         #card {
             width: 45%;
         }
     }
-
     @media only screen and (max-width: 758px) {
         #card {
             width: 90%;
@@ -40,33 +38,33 @@
             </div>
             <div class="card-footer bg-transparent border-success">
                 {% if storeitem.item_name == 'Room Access' %}
-                {% if request.user.room_access %}
-                You already Own this item
+                    {% if request.user.room_access %}
+                        You already Own this item
+                    {% else %}
+                            {% if request.user.coins >= storeitem.item_price %}
+                        <form action="/store" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
+                            <button class="btn btn-success" type="submit">Buy Now</button>
+                        </form>
+                            {% else %}
+                                <a class="btn btn-success" href="/">Earn More</a>
+                            {% endif %}
+                    {% endif %}
                 {% else %}
-                {% if request.user.coins >= storeitem.item_price %}
-                <form action="/store" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
-                    <button class="btn btn-success" type="submit">Buy Now</button>
-                </form>
-                {% else %}
-                <a class="btn btn-success" href="/">Earn More</a>
-                {% endif %}
-                {% endif %}
-                {% else %}
-                {% if request.user.room_admin %}
-                You already Own this item
-                {% else %}
-                {% if request.user.coins >= storeitem.item_price %}
-                <form action="/store" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
-                    <button class="btn btn-success" type="submit">Buy Now</button>
-                </form>
-                {% else %}
-                <a class="btn btn-success" href="/">Earn More</a>
-                {% endif %}
-                {% endif %}
+                    {% if request.user.room_admin %}
+                        You already Own this item
+                    {% else %}
+                            {% if request.user.coins >= storeitem.item_price %}
+                        <form action="/store" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
+                            <button class="btn btn-success" type="submit">Buy Now</button>
+                        </form>
+                            {% else %}
+                            <a class="btn btn-success" href="/">Earn More</a>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
@@ -84,27 +82,27 @@
                 <p class="card-text text-dark">{{storeitem.item_desc}}</p>
             </div>
             <div class="card-footer bg-transparent border-success">
-                {% if storeitem.item_name == 'Water Your Trees' %}
+            {% if storeitem.item_name == 'Water Your Trees' %}
                 {% if request.user.deadtrees > 0 %}
-                {% if request.user.coins >= storeitem.item_price %}
-                <form action="/store" method="POST">
+                    {% if request.user.coins >= storeitem.item_price %}
+                    <form action="/store" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
                     <button class="btn btn-success" type="submit">Buy Now</button>
                 </form>
-                {% else %}
-                <a class="btn btn-success" href="/">Earn More</a>
-                {% endif %}
+                    {% else %}
+                        <a class="btn btn-success" href="/">Earn More</a>
+                    {% endif %}
                 {% else %}
                 You have no dead trees
                 {% endif %}
-                {% else %}
+            {% else %}
                 {% if request.user.coins >= storeitem.item_price %}
-                <a class="btn btn-success" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy Now</a>
+                    <a class="btn btn-success" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy Now</a>
                 {% else %}
-                <a class="btn btn-success" href="/">Earn More</a>
+                    <a class="btn btn-success" href="/">Earn More</a>
                 {% endif %}
-                {% endif %}
+            {% endif %}
             </div>
         </div>
         {% endif %}
