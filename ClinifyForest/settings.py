@@ -51,10 +51,8 @@ INSTALLED_APPS = [
     'login.apps.LoginConfig',
     'search.apps.SearchConfig',
 ]
-# WHITENOISE_USE_FINDERS = True
 
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
