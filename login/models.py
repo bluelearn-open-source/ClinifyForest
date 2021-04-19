@@ -10,7 +10,7 @@ class DiscordUser(models.Model):
     discord_tag = models.CharField(max_length=100)
     avatar = models.CharField(null=True, max_length=100, blank=True)
     level = models.IntegerField(default=0)
-    coins = models.IntegerField(default=0)
+    coins = models.PositiveIntegerField(default=0)
     trees = models.IntegerField(default=0)
     deadtrees = models.IntegerField(default=0)
     room_admin = models.BooleanField(default=False)
