@@ -1,6 +1,6 @@
 from django.db import models
 from .managers import DiscordUserOAuth2Manager
-
+from math import ceil
 # Create your models here.
 
 class DiscordUser(models.Model):
@@ -31,3 +31,7 @@ class DiscordUser(models.Model):
 
     def __str__(self):
         return self.discord_tag
+    
+    def save(self, *args, **kwargs):
+        self.level = ceil(self.trees / 50)
+        super(DiscordUser, self).save(*args, **kwargs)
