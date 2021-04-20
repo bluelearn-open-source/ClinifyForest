@@ -96,7 +96,7 @@ let mysession = setInterval(() => {
         document.getElementById('seconds').classList.remove('white-text-timer')
         document.getElementById('separator').classList.remove('white-text-timer')
     }
-    if (diff <= 1770000) {
+    if (diff <= 0) {
         clearInterval(mysession)
         document.getElementById("seconds").innerHTML = "00"
         document.getElementById("minutes").innerHTML = "00"
