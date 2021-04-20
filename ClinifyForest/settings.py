@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'pwa',
     'main.apps.MainConfig',
     'login.apps.LoginConfig',
     'search.apps.SearchConfig',
@@ -144,6 +144,28 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+PWA_APP_NAME = 'ClinifyForest'
+PWA_APP_DESCRIPTION = 'Forest Pomodoro app made for Clinify Squad Discord Server'
+PWA_APP_THEME_COLOR = '#198754'
+PWA_APP_BACKGROUND_COLOR = '#198754'
+PWA_APP_ICONS = [
+    {
+        "src": "/static/cflogo-500x500.png",
+        "sizes": "500x500",
+        "type": "image/png"
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        "src": "/static/cflogo-500x500.png",
+        "sizes": "500x500",
+        "type": "image/png"
+    }
+]
+
+
+
 try:
     from .local_settings import *
 except ImportError:

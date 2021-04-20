@@ -1,0 +1,40 @@
+.show_message {
+    display: block;
+  }
+
+  #timer {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 10px solid #ffc107;
+  }
+
+  input[type="range"]::-ms-thumb {
+    background: #ffc107 !important;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    background: #ffc107 !important;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    background: #ffc107 !important;
+  }
+
+  .white-text-timer {
+    color: #fff !important;
+  }
+
+#card{
+        width: 30%;
+    }
+    @media only screen and (max-width: 994px) {
+        #card {
+            width: 45%;
+        }
+    }
+    @media only screen and (max-width: 758px) {
+        #card {
+            width: 90%;
+        }
+    }
