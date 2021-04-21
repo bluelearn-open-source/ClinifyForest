@@ -1,4 +1,5 @@
 from django.db.models.fields import DateTimeField
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from login.models import DiscordUser
 from .models import Store
@@ -116,3 +117,11 @@ def rooms(request):
             return render(request, 'main/rooms.html', params)
         return redirect(home)
     return redirect(home)
+
+def assetlinks(request):
+    response_data = [{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "com.herokuapp.clinifyforest.twa",
+                   "sha256_cert_fingerprints": ["AA:BA:03:99:D5:5B:7A:33:60:2B:36:F9:BC:10:AF:A1:9A:18:02:8A:3A:B0:F5:F5:C4:63:F5:54:51:97:D6:42"] }
+    }]
+    return JsonResponse(response_data, safe=False)
