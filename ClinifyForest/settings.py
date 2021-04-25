@@ -182,5 +182,6 @@ PWA_APP_ICONS_APPLE = [
 try:
     from .local_settings import *
 except ImportError:
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
+    pass
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # SECURE_SSL_REDIRECT = True
