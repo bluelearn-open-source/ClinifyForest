@@ -46,12 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',
     'pwa',
     'main.apps.MainConfig',
     'login.apps.LoginConfig',
     'search.apps.SearchConfig',
     'rooms.apps.RoomsConfig',
+    'channels',
 ]
 
 
@@ -92,7 +92,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [os.environ.get('REDIS_URL'), 6379],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
         },
     },
 }
