@@ -1,12 +1,21 @@
-from django.shortcuts import render
-
-# Create your views here.
+from django.shortcuts import render, redirect
 
 def index(request):
-    return render(request, 'rooms/index.html', {})
-
+    params = {}
+    if request.user.is_authenticated:
+        if request.user.room_access or request.user.room_admin:
+            params = {'loginuser': request.user}
+        return render(request, 'rooms/index.html', params)
+    return redirect('home')
 
 def room(request, room_name):
-    return render(request, 'rooms/rooms.html', {
-        'room_name': room_name
-    })
+    params = {}
+    if request.user.is_authenticated:
+        if request.user.room_access or request.user.room_admin:
+            params = {'loginuser': request.user, 'room_name': room_name}
+            if room_name == 'padhai-moment' or room_name == 'coding-shoding' or room_name == 'chamber-of-secrets':
+                if not request.user.room_admin and room_name == 'chamber-of-secrets':
+                    return redirect(index)
+                return render(request, 'rooms/room.html', params)
+    return redirect(index)
+
