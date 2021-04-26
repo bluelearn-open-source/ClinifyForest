@@ -119,9 +119,18 @@ def rooms(request):
     return redirect(home)
 
 def assetlinks(request):
-    response_data = [{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "com.herokuapp.clinifyforest.twa",
-                   "sha256_cert_fingerprints": ["AA:BA:03:99:D5:5B:7A:33:60:2B:36:F9:BC:10:AF:A1:9A:18:02:8A:3A:B0:F5:F5:C4:63:F5:54:51:97:D6:42"] }
-    }]
+    response_data = [
+        {
+            "relation": [
+                "delegate_permission/common.handle_all_urls"
+            ],
+            "target": {
+                "namespace": "android_app",
+                "package_name": "com.herokuapp.clinifyforest.twa",
+                "sha256_cert_fingerprints": [
+                    "78:57:6E:D0:19:47:29:8A:07:A5:DB:4A:40:50:01:D2:A4:3E:9F:BC:EA:AF:A0:2E:96:CD:C5:F0:99:53:96:D2"
+                ]
+            }
+        }
+    ]
     return JsonResponse(response_data, safe=False)

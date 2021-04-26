@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -185,3 +186,6 @@ try:
 except ImportError:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
+
+# web: daphne -p $PORT -b 0.0.0.0 ClinifyForest.asgi:application
+# worker: python manage.py runworker channels --settings=ClinifyForest.settings
