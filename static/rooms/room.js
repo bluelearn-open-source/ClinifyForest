@@ -8,6 +8,14 @@ const chatSocket = new WebSocket(
     + '/'
 );
 
+chatSocket.onopen = function(e) {
+    cuser = document.getElementById('cuser').textContent
+    message = `<div class="text-white my-2 p-1 rounded text-center" style="display: block; font-size: 16px;">` + cuser + ` joined the room</div>`
+    chatSocket.send(JSON.stringify({
+        'message': message
+    }));
+}
+
 chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     document.querySelector('#chat-log').innerHTML += (data.message + '\n');
@@ -30,9 +38,9 @@ document.querySelector('#chat-message-submit').onclick = function (e) {
     cuser = document.getElementById('cuser').textContent
     cuserid = document.getElementById('cuserid').textContent
     cuseravatar = document.getElementById('cuseravatar').textContent
-    if (cuseravatar.length < 1){
+    if (cuseravatar.length < 1) {
         link = 'https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png'
-    }else{
+    } else {
         link = `<img width="20px" height="20px" style="border-radius: 50%;" src="https://cdn.discordapp.com/avatars/` + cuserid + `/` + cuseravatar + `.png">`
     }
     if (message.length < 2) {
@@ -41,8 +49,8 @@ document.querySelector('#chat-message-submit').onclick = function (e) {
     }
     document.getElementById('error').classList.add('d-none')
     message = `<div class="bg-warning my-2 p-2 rounded" style="display: inline-block; font-size: 20px;">
-            <div style="display: flex; flex-direction: row; align-items: center;">` + link + 
-            `<strong class="text-success mx-2" style="font-size: 16px">` + cuser + "</strong></div style='white-space: normal;'>" + message + "</div><br>"
+            <div style="display: flex; flex-direction: row; align-items: center;">` + link +
+        `<strong class="text-success mx-2" style="font-size: 16px">` + cuser + "</strong></div style='white-space: normal;'>" + message + "</div><br>"
     chatSocket.send(JSON.stringify({
         'message': message
     }));

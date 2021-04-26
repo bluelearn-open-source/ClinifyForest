@@ -12,12 +12,13 @@
 <h6 id="error" class="text-warning text-center mb-2"></h6>
 <div>
 <div id="chat-log" class="mb-2 p-2" style="color: black; height: calc(100vh - 225px); overflow-y: auto; scroll-behavior: smooth;"></div>
-    
+
 <div class="input-group">
   <input type="text/emoji" class="form-control" id="chat-message-input" placeholder="Message @ {{room_name}}">
   <button class="btn btn-warning" id="chat-message-submit" value="Send" type="button">Send</button>
 </div>
 </div>
+{{room_group_name}}
     {{ room_name|json_script:"room-name" }}
     <span id="cuser" class="d-none">{{request.user.discord_tag}}</span>
     <span id="cuserid" class="d-none">{{request.user.id}}</span>
