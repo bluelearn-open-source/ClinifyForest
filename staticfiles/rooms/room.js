@@ -42,7 +42,7 @@ document.querySelector('#chat-message-submit').onclick = function (e) {
     document.getElementById('error').classList.add('d-none')
     message = `<div class="bg-warning my-2 p-2 rounded" style="display: inline-block; font-size: 20px;">
             <div style="display: flex; flex-direction: row; align-items: center;">` + link + 
-            `<strong class="text-success mx-2" style="font-size: 16px">` + cuser + "</strong></div>" + message + "</div><br>"
+            `<strong class="text-success mx-2" style="font-size: 16px">` + cuser + "</strong></div style='white-space: normal;'>" + message + "</div><br>"
     chatSocket.send(JSON.stringify({
         'message': message
     }));
