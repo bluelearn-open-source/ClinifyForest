@@ -35,7 +35,7 @@ document.querySelector('#chat-message-submit').onclick = function (e) {
     }else{
         link = `<img width="20px" height="20px" style="border-radius: 50%;" src="https://cdn.discordapp.com/avatars/` + cuserid + `/` + cuseravatar + `.png">`
     }
-    if (message.length < 2 || message.length > 30) {
+    if (message.length < 2) {
         document.getElementById('error').classList.remove('d-none')
         return null
     }
