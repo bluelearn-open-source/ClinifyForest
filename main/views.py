@@ -66,7 +66,7 @@ def home(request):
     return render(request, 'main/home.html', params)
 
 def lb(request):
-    users = DiscordUser.objects.order_by('-trees', 'deadtrees')[:20]
+    users = DiscordUser.objects.order_by('-trees', 'deadtrees').all()
     params = {'users': users}
     if request.user.is_authenticated:
         params = {'loginuser': request.user, 'users': users}
