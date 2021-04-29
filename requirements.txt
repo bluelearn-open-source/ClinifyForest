@@ -15,6 +15,7 @@ daphne==3.0.1
 dj-database-url==0.5.0
 Django==3.1.7
 django-pwa==1.0.10
+djangorestframework==3.12.4
 gunicorn==20.1.0
 hiredis==2.0.0
 hyperlink==21.0.0
