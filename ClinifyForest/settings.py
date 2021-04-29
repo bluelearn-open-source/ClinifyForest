@@ -40,18 +40,25 @@ AUTHENTICATION_BACKENDS = [
 
 
 INSTALLED_APPS = [
+    # default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my installations
     'pwa',
+    'channels',
+    'rest_framework',
+
+    # my apps
     'main.apps.MainConfig',
     'login.apps.LoginConfig',
     'search.apps.SearchConfig',
     'rooms.apps.RoomsConfig',
-    'channels',
+    'api.apps.ApiConfig',
 ]
 
 

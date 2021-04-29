@@ -29,6 +29,7 @@ urlpatterns = [
     path('leaderboard', lb, name="lb"),
     path('store', store, name="store"),
     path('rooms/', include('rooms.urls')),
+    path('clinifyforest/api/', include('api.urls')),
     path('reset', reset, name="reset"),
     path('search', search, name="search"),
     path('login', discord_login, name='discord_login'),
