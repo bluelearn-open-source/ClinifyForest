@@ -31,9 +31,12 @@ class getuser(APIView):
     API pulls User Info
     """
     def get(self, request, id):
-        user = DiscordUser.objects.get(id=id)
-        serializeduser=DiscordUserSerializer(user)
-        return Response(serializeduser.data)
+        try:
+            user = DiscordUser.objects.get(id=id)
+            serializeduser=DiscordUserSerializer(user)
+            return Response(serializeduser.data)
+        except:
+            return Response({'error':'User Not Found'})
 
 
 
