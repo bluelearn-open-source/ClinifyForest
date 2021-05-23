@@ -86,12 +86,12 @@ Prequisites
 ### Installation
 
 1. Create a Virtual enviornment
-  ```sh
-  python -m venv csenv
-  ```
-  ```sh
-  ./csenv/Scripts/activate
-  ```
+   ```sh
+   python -m venv csenv
+   ```
+   ```sh
+   source ./csenv/Scripts/activate
+   ```
 3. Clone the repo
    ```sh
    git clone https://github.com/tiluckdave/ClinifyForest.git
