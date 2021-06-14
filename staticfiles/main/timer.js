@@ -53,9 +53,9 @@ let mysession = setInterval(() => {
     session_minutes = m
     session_seconds = s
     document.getElementById('timer').innerHTML = `
-    <h4 id="minutes" class="display-4 text-warning">30</h4>
-    <h4 id="separator" class="display-4 text-warning">:</h4>
-    <h4 id="seconds" class="display-4 text-warning">00</h4>
+    <h4 id="minutes" class="display-4 text-black">30</h4>
+    <h4 id="separator" class="display-4 text-black">:</h4>
+    <h4 id="seconds" class="display-4 text-black">00</h4>
     `
     document.getElementById('startbtn').classList.add('d-none')
     document.getElementById('cancelbtn').classList.remove('d-none')

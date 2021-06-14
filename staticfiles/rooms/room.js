@@ -10,7 +10,7 @@ const chatSocket = new WebSocket(
 
 chatSocket.onopen = function(e) {
     cuser = document.getElementById('cuser').textContent
-    message = `<div class="text-white my-2 p-1 rounded text-center" style="display: block; font-size: 16px;">` + cuser + ` joined the room</div>`
+    message = `<div class="text-black my-2 p-1 rounded text-center" style="display: block; font-size: 16px;">` + cuser + ` joined the room</div>`
     chatSocket.send(JSON.stringify({
         'message': message
     }));
@@ -48,9 +48,9 @@ document.querySelector('#chat-message-submit').onclick = function (e) {
         return null
     }
     document.getElementById('error').classList.add('d-none')
-    message = `<div class="bg-warning my-2 p-2 rounded" style="display: inline-block; font-size: 20px;">
+    message = `<div class="bg-white my-2 p-2 rounded" style="display: inline-block; font-size: 20px;">
             <div style="display: flex; flex-direction: row; align-items: center;">` + link +
-        `<strong class="text-success mx-2" style="font-size: 16px">` + cuser + "</strong></div style='white-space: normal;'>" + message + "</div><br>"
+        `<strong class="text-primary mx-2" style="font-size: 16px">` + cuser + "</strong></div style='white-space: normal;'>" + message + "</div><br>"
     chatSocket.send(JSON.stringify({
         'message': message
     }));

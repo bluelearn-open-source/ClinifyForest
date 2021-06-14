@@ -1,40 +1,29 @@
 .show_message {
-    display: block;
-  }
+  display: block;
+}
 
-  #timer {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 10px solid #ffc107;
-  }
+#timer {
+  width: 200px;
+  background-color: #fff;
+  height: 200px;
+  border-radius: 50%;
+  border: 10px solid #fff;
+}
 
-  input[type="range"]::-ms-thumb {
-    background: #ffc107 !important;
-  }
+.white-text-timer {
+  color: #0d6efd !important;
+}
 
-  input[type="range"]::-moz-range-thumb {
-    background: #ffc107 !important;
+#card {
+  width: 30%;
+}
+@media only screen and (max-width: 994px) {
+  #card {
+    width: 45%;
   }
-
-  input[type="range"]::-webkit-slider-thumb {
-    background: #ffc107 !important;
+}
+@media only screen and (max-width: 758px) {
+  #card {
+    width: 90%;
   }
-
-  .white-text-timer {
-    color: #fff !important;
-  }
-
-#card{
-        width: 30%;
-    }
-    @media only screen and (max-width: 994px) {
-        #card {
-            width: 45%;
-        }
-    }
-    @media only screen and (max-width: 758px) {
-        #card {
-            width: 90%;
-        }
-    }
+}
