@@ -25,8 +25,8 @@
 
 
   <div>
-    <div class="text-center text-warning my-2 h6" id="treesinfo">Plants 1 tree if you fail, you kill 1 tree</div>
-    <div class="text-center text-warning my-2 h6" id="coinsinfo">
+    <div class="text-center text-black my-2 h6" id="treesinfo">Plants 1 tree if you fail, you kill 1 tree</div>
+    <div class="text-center text-black my-2 h6" id="coinsinfo">
       <div>Success: +25 coins</div>
       <div>Failure: -20 coins</div>
     </div>
@@ -34,32 +34,32 @@
 
   <div class="d-flex justify-content-center align-items-center my-3" id="timer">
     {% if loginuser.in_session %}
-    <div class="spinner-border text-warning" role="status">
+    <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
     {% else %}
-    <h4 id="minutes" class="display-4 text-warning">30</h4>
-    <h4 id="separator" class="display-4 text-warning">:</h4>
-    <h4 id="seconds" class="display-4 text-warning">00</h4>
+    <h4 id="minutes" class="display-4 text-black">30</h4>
+    <h4 id="separator" class="display-4 text-black">:</h4>
+    <h4 id="seconds" class="display-4 text-black">00</h4>
     {% endif %}
   </div>
 
-  <strong class="text-warning text-center h6">Deep Focus Mode Will be Back Soon</strong>
+  {% comment %} <strong class="text-warning text-center h6">Deep Focus Mode Will be Back Soon</strong> {% endcomment %}
   {% if request.user.slowmode %}
-  <strong class="text-white text-center h6">You are on slowmode. You will get no trees and 10 coins every 30 minutes</strong>
+  <strong class="text-black text-center h6">You are on slowmode. You will get no trees and 10 coins every 30 minutes</strong>
 {% endif %}
   {% if loginuser %}
-  <button class="btn btn-warning mt-3" id="startbtn" onclick="document.getrange.submit()">
+  <button class="btn btn-primary mt-3" id="startbtn" onclick="document.getrange.submit()">
     start
   </button>
-  <button class="btn btn-warning d-none mt-3" data-bs-toggle="modal" data-bs-target="#diedtreemodal" id="giveupbtn">
+  <button class="btn btn-primary d-none mt-3" data-bs-toggle="modal" data-bs-target="#diedtreemodal" id="giveupbtn">
     Giveup
   </button>
   <button class="btn btn-secondary d-none mt-3" onclick="canceltimer()" id="cancelbtn">
     Cancel
   </button>
   {% else %}
-  <strong class="text-white text-center">Please Login to continue<br>Only Clinify Squad members can login</strong>
+  <strong class="text-black text-center">Please Login to continue<br>Only <a href="https://bluelearn.in">bluelearn</a> members can login</strong>
   {% endif %}
 </div>
 
@@ -75,7 +75,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button class="btn btn-success" onclick="giveup()">Ok</button>
+        <button class="btn btn-primary" onclick="giveup()">Ok</button>
       </div>
     </div>
   </div>
@@ -97,7 +97,7 @@
         If you are using deep focus mode then press 'enter'
       </div>
       <div class="modal-footer">
-        <button class="btn btn-success" id="treemodalsubmit" onclick="document.getrange.submit()">Ok</button>
+        <button class="btn btn-primary" id="treemodalsubmit" onclick="document.getrange.submit()">Ok</button>
       </div>
     </div>
   </div>

@@ -6,11 +6,11 @@
 
 {% block body %}
 <div class="container mb-5">
-    <h1 class="text-warning text-center my-5">Leader Board</h1>
+    <h1 class="text-black text-center my-5">Leader Board</h1>
     {% for user in users %}
-    <div class="card text-dark bg-warning my-3">
-        <div class="card-header">
-            <strong class="display-4">#{{forloop.counter}}</strong> <strong>{{user.discord_tag}}</strong><br>
+    <div class="card text-dark bg-white my-3">
+        <div class="card-header bg-white">
+            <strong class="display-4"><span class="text-primary">#</span>{{forloop.counter}}</strong> <strong>{{user.discord_tag}}</strong><br>
             <span class="badge bg-dark">Study Buddies</span>
             {% if user.room_access %}<span class="badge bg-danger">Room Access</span>{% endif %}
             {% if user.room_admin %}<span class="badge bg-secondary">Room Admin</span>{% endif %}
@@ -28,13 +28,13 @@
                 </div>
                 <div class="col-md-10 mt-3 mt-md-0">
                     <ul class="list-group">
-                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has grown
+                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has grown
                             <strong>{{user.trees}}</strong> trees
                         </li>
-                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has killed
+                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has killed
                             <strong>{{user.deadtrees}}</strong> trees
                         </li>
-                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has earned
+                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has earned
                             <strong>{{user.coins}}</strong> coins
                         </li>
                     </ul>

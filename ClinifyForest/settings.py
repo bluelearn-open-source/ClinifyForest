@@ -169,18 +169,18 @@ STATICFILES_DIRS = (
 
 PWA_APP_NAME = 'ClinifyForest'
 PWA_APP_DESCRIPTION = 'Forest Pomodoro app made for Clinify Squad Discord Server'
-PWA_APP_THEME_COLOR = '#198754'
-PWA_APP_BACKGROUND_COLOR = '#198754'
+PWA_APP_THEME_COLOR = '#0d6efd'
+PWA_APP_BACKGROUND_COLOR = '#0d6efd'
 PWA_APP_ICONS = [
     {
-        "src": "/static/cflogo-500x500.png",
+        "src": "/static/bf.png",
         "sizes": "500x500",
         "type": "image/png"
     }
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        "src": "/static/cflogo-500x500.png",
+        "src": "/static/bf.png",
         "sizes": "500x500",
         "type": "image/png"
     }

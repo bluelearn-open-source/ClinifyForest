@@ -13,18 +13,18 @@
 {% block body %}
 
 <div class="container">
-    <h1 class="text-warning text-center mt-5">Store</h1>
+    <h1 class="text-black text-center mt-5">Store</h1>
     <div class="row my-5">
-        <h2 class="text-white">One Time Purchase</h2>
+        <h2 class="text-black">One Time Purchase</h2>
         {% for storeitem in store %}
         {% if storeitem.category == 1 %}
-        <div class="card border-success bg-warning m-3" id="card">
-            <div class="card-header h3 border-success">{{storeitem.item_name}}</div>
-            <div class="card-body text-success">
-                <h5 class="card-title fw-bold">for {{storeitem.item_price}} coins</h5>
-                <p class="card-text text-dark">{{storeitem.item_desc}}</p>
+        <div class="card bg-white m-3" id="card">
+            <div class="card-header h3 bg-white">{{storeitem.item_name}}</div>
+            <div class="card-body">
+                <h5 class="card-title text-primary fw-bold">for {{storeitem.item_price}} coins</h5>
+                <p class="card-text text-black">{{storeitem.item_desc}}</p>
             </div>
-            <div class="card-footer bg-transparent border-success">
+            <div class="card-footer bg-transparent">
                 {% if storeitem.item_name == 'Room Access' %}
                     {% if request.user.room_access %}
                         You already Own this item
@@ -33,10 +33,10 @@
                         <form action="/store" method="POST">
                             {% csrf_token %}
                             <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
-                            <button class="btn btn-success" type="submit">Buy Now</button>
+                            <button class="btn btn-primary" type="submit">Buy Now</button>
                         </form>
                             {% else %}
-                                <a class="btn btn-success" href="/">Earn More</a>
+                                <a class="btn btn-primary" href="/">Earn More</a>
                             {% endif %}
                     {% endif %}
                 {% else %}
@@ -47,10 +47,10 @@
                         <form action="/store" method="POST">
                             {% csrf_token %}
                             <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
-                            <button class="btn btn-success" type="submit">Buy Now</button>
+                            <button class="btn btn-primary" type="submit">Buy Now</button>
                         </form>
                             {% else %}
-                            <a class="btn btn-success" href="/">Earn More</a>
+                            <a class="btn btn-primary" href="/">Earn More</a>
                         {% endif %}
                     {% endif %}
                 {% endif %}
@@ -60,35 +60,29 @@
         {% endfor %}
     </div>
     <div class="row my-5">
-        <h2 class="text-white">Just Buy</h2>
+        <h2 class="text-black">Just Buy</h2>
         {% for storeitem in store %}
         {% if storeitem.category == 0 %}
-        <div class="card border-success bg-warning m-3" id="card">
-            <div class="card-header h3 border-success">{{storeitem.item_name}}</div>
-            <div class="card-body text-success">
-                <h5 class="card-title fw-bold">for {{storeitem.item_price}} coins</h5>
-                <p class="card-text text-dark">{{storeitem.item_desc}}</p>
+        <div class="card bg-white m-3" id="card">
+            <div class="card-header bg-white h3">{{storeitem.item_name}}</div>
+            <div class="card-body">
+                <h5 class="card-title text-primary fw-bold">for {{storeitem.item_price}} coins</h5>
+                <p class="card-text text-black">{{storeitem.item_desc}}</p>
             </div>
-            <div class="card-footer bg-transparent border-success">
+            <div class="card-footer bg-transparent">
             {% if storeitem.item_name == 'Water Your Trees' %}
                 {% if request.user.deadtrees > 0 %}
                     {% if request.user.coins >= storeitem.item_price %}
                     <form action="/store" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
-                    <button class="btn btn-success" type="submit">Buy Now</button>
+                    <button class="btn btn-primary" type="submit">Buy Now</button>
                 </form>
                     {% else %}
-                        <a class="btn btn-success" href="/">Earn More</a>
+                        <a class="btn btn-primary" href="/">Earn More</a>
                     {% endif %}
                 {% else %}
                 You have no dead trees
-                {% endif %}
-            {% else %}
-                {% if request.user.coins >= storeitem.item_price %}
-                    <a class="btn btn-success" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Buy Now</a>
-                {% else %}
-                    <a class="btn btn-success" href="/">Earn More</a>
                 {% endif %}
             {% endif %}
             </div>

@@ -8,8 +8,8 @@
 <div class="container-sm py-3">
 {% if users %}
     {% for user in users %}
-    <div class="card text-dark bg-warning my-3">
-        <div class="card-header">
+    <div class="card text-dark bg-white my-3">
+        <div class="card-header bg-white">
             <strong>{{user.discord_tag}}</strong>
             <span class="badge bg-dark">Study Buddies</span>
             {% if user.room_access %}<span class="badge bg-danger">Room Access</span>{% endif %}
@@ -28,13 +28,13 @@
                 </div>
                 <div class="col-md-10 mt-3 mt-md-0">
                     <ul class="list-group">
-                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has grown
+                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has grown
                             <strong>{{user.trees}}</strong> trees
                         </li>
-                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has killed
+                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has killed
                             <strong>{{user.deadtrees}}</strong> trees
                         </li>
-                        <li class="list-group-item bg-warning"><strong>{{user.discord_tag}}</strong> has earned
+                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has earned
                             <strong>{{user.coins}}</strong> coins
                         </li>
                     </ul>
