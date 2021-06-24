@@ -2,14 +2,18 @@
 /* width */
 ::-webkit-scrollbar {
   width: 4px;
+  
 }
+
 
 /* Track */
 ::-webkit-scrollbar-track {
-  width: 0;
+  width: 4px;
+  background: white;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #0d6efd;
+  border-radius: 30px;
 }
