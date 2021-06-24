@@ -45,7 +45,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Clinify Forest is a pomodoro app made for Clinify Squad Discord Server.
+blueforest is a pomodoro app made for bluelearn Discord Server.
 
 ### Built With
 
@@ -79,8 +79,8 @@ Setting up the project locally maybe headache for the first time but believe me 
   ```shell
   pip install virtualenv
   ```
-* You should compulsorily become a member of Clinify Squad Discord Server link ->
-  [Clinify Squad](https://bluelearn.in/discord)
+* You should compulsorily become a member of bluelearn Discord Server link ->
+  [bluelearn](https://bluelearn.in/discord)
  
 ### Installation
 
@@ -93,7 +93,7 @@ Setting up the project locally maybe headache for the first time but believe me 
    ```
 3. Clone the repo
    ```shell
-   git clone https://github.com/tiluckdave/ClinifyForest.git
+   git clone https://github.com/Clinify-Open-Sauce/ClinifyForest.git
    ```
 3. Install requirements
    ```shell
