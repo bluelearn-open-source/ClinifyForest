@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     # my apps
     'main.apps.MainConfig',
     'login.apps.LoginConfig',
-    'search.apps.SearchConfig',
     'rooms.apps.RoomsConfig',
     'api.apps.ApiConfig',
 ]
@@ -167,8 +166,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-PWA_APP_NAME = 'ClinifyForest'
-PWA_APP_DESCRIPTION = 'Forest Pomodoro app made for Clinify Squad Discord Server'
+PWA_APP_NAME = 'blueforest'
+PWA_APP_DESCRIPTION = 'Forest Pomodoro app made for bluelearn Discord Server'
 PWA_APP_THEME_COLOR = '#0d6efd'
 PWA_APP_BACKGROUND_COLOR = '#0d6efd'
 PWA_APP_ICONS = [

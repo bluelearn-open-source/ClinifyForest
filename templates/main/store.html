@@ -14,18 +14,17 @@
 
 <div class="container">
     <h1 class="text-black text-center mt-5">Store</h1>
-    <div class="row my-5">
-        <h2 class="text-black">One Time Purchase</h2>
-        {% for storeitem in store %}
-        {% if storeitem.category == 1 %}
-        <div class="card bg-white m-3" id="card">
-            <div class="card-header h3 bg-white">{{storeitem.item_name}}</div>
-            <div class="card-body">
-                <h5 class="card-title text-primary fw-bold">for {{storeitem.item_price}} coins</h5>
-                <p class="card-text text-black">{{storeitem.item_desc}}</p>
-            </div>
-            <div class="card-footer bg-transparent">
-                {% if storeitem.item_name == 'Room Access' %}
+
+<div class="row my-5">
+{% for storeitem in store %}
+  <div class="col-md-4">
+    <div class="card mt-2">
+      <div class="card-body">
+        <h5 class="card-title">{{storeitem.item_name}}</h5>
+        <h5 class="card-title text-primary fw-bold">for {{storeitem.item_price}} coins</h5>
+        <p class="card-text">{{storeitem.item_desc}}</p>
+    <div class="card-footer bg-white">
+        {% if storeitem.item_name == 'Room Access' %}
                     {% if request.user.room_access %}
                         You already Own this item
                     {% else %}
@@ -39,7 +38,23 @@
                                 <a class="btn btn-primary" href="/">Earn More</a>
                             {% endif %}
                     {% endif %}
+                {% endif %}
+        {% if storeitem.item_name == 'Water Your Trees' %}
+                {% if request.user.deadtrees > 0 %}
+                    {% if request.user.coins >= storeitem.item_price %}
+                    <form action="/store" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
+                    <button class="btn btn-primary" type="submit">Buy Now</button>
+                </form>
+                    {% else %}
+                        <a class="btn btn-primary" href="/">Earn More</a>
+                    {% endif %}
                 {% else %}
+                You have no dead trees
+                {% endif %}
+        {% endif %}
+        {% if storeitem.item_name == 'Room Admin' %}
                     {% if request.user.room_admin %}
                         You already Own this item
                     {% else %}
@@ -54,43 +69,18 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
-            </div>
-        </div>
-        {% endif %}
-        {% endfor %}
     </div>
-    <div class="row my-5">
-        <h2 class="text-black">Just Buy</h2>
-        {% for storeitem in store %}
-        {% if storeitem.category == 0 %}
-        <div class="card bg-white m-3" id="card">
-            <div class="card-header bg-white h3">{{storeitem.item_name}}</div>
-            <div class="card-body">
-                <h5 class="card-title text-primary fw-bold">for {{storeitem.item_price}} coins</h5>
-                <p class="card-text text-black">{{storeitem.item_desc}}</p>
-            </div>
-            <div class="card-footer bg-transparent">
-            {% if storeitem.item_name == 'Water Your Trees' %}
-                {% if request.user.deadtrees > 0 %}
-                    {% if request.user.coins >= storeitem.item_price %}
-                    <form action="/store" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
-                    <button class="btn btn-primary" type="submit">Buy Now</button>
-                </form>
-                    {% else %}
-                        <a class="btn btn-primary" href="/">Earn More</a>
-                    {% endif %}
-                {% else %}
-                You have no dead trees
-                {% endif %}
-            {% endif %}
-            </div>
-        </div>
-        {% endif %}
-        {% endfor %}
+      </div>
     </div>
+  </div>
+  {% endfor %}
 </div>
+
+
+
+
+
+    
 
 
 {% endblock body %}

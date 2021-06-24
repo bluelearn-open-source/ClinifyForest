@@ -1,50 +1,57 @@
 {% extends 'base.html' %}
-
 {% block title %}Leader Board{% endblock title %}
-
 {% block lbactive %}active{% endblock lbactive %}
-
 {% block body %}
+
 <div class="container mb-5">
-    <h1 class="text-black text-center my-5">Leader Board</h1>
-    {% for user in users %}
-    <div class="card text-dark bg-white my-3">
-        <div class="card-header bg-white">
-            <strong class="display-4"><span class="text-primary">#</span>{{forloop.counter}}</strong> <strong>{{user.discord_tag}}</strong><br>
-            <span class="badge bg-dark">Study Buddies</span>
-            {% if user.room_access %}<span class="badge bg-danger">Room Access</span>{% endif %}
-            {% if user.room_admin %}<span class="badge bg-secondary">Room Admin</span>{% endif %}
-            {% if user.slowmode %}<span class="badge bg-primary">Slowmode Enabled</span>{% endif %}
-            <span class="badge bg-success mt-1">Level {{user.level}}</span>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-2 d-flex align-items-center justify-content-center">
-                    {% if user.avatar %}
-                    <img src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}.png"
-                        style="border-radius: 50%;">{% else %}<img
-                        src="https://discord.com/assets/1cbd08c76f8af6dddce02c5138971129.png"
-                        style="border-radius: 50%;" width="128px">{% endif %}
-                </div>
-                <div class="col-md-10 mt-3 mt-md-0">
-                    <ul class="list-group">
-                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has grown
-                            <strong>{{user.trees}}</strong> trees
-                        </li>
-                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has killed
-                            <strong>{{user.deadtrees}}</strong> trees
-                        </li>
-                        <li class="list-group-item bg-light"><strong>{{user.discord_tag}}</strong> has earned
-                            <strong>{{user.coins}}</strong> coins
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+  <h1 class="text-black text-center my-5">Leader Board</h1>
+  <div class="row mx-auto">
+  {% for user in users %}
+<div class="col-md-6 mx-auto">
+  <div class="card text-dark bg-white my-3 mx-auto" style="max-width:500px;">
+    <div class="card-header bg-white d-flex justify-content-center">
+            <span class="text-primary display-6">#</span> <span class="display-6">{{forloop.counter}}
+            {{user.discord_tag}}
+            </span>
+            <strong>
+            {% if user.in_session %}
+            <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">Planting</span>
+            {% else %}
+            <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">Tell them to plant</span>
+            {% endif %}
+
+          {% comment %} {% if user.avatar %}
+          <img
+            class="align-middle"
+            src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}.png"
+            onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';"
+            style="border-radius: 50%; width: 38px"
+          />{% else %}<img
+            class="align-middle"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU"
+            style="border-radius: 50%"
+            width="38px"
+          />{% endif %} {% endcomment %}
+          </strong>
     </div>
-    {% endfor %}
+    <div class="card-body">
+
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <span class="nav-link display-6"><i class="fas fa-tree" style="color:green;"></i> {{user.trees}}</span>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link display-6"><i class="fas fa-tree" style="color:brown;"></i> {{user.deadtrees}}</span>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link display-6"><i class="fas fa-dollar-sign" style="color:gold;"></i> {{user.coins}}</span>
+    </li>
+</ul>  
+    </div>
+  </div>
+</div>
+  {% endfor %}
+  </div>
 </div>
 
-
 {% endblock body %}
-

@@ -1,18 +1,18 @@
 <p align="center">
 
-  <h1 align="center">ClinifyForest</h1>
+  <h1 align="center">blueforest</h1>
 
   <p align="center">
-    Clinify Exclusive Forest App!
+    bluelearn Exclusive Forest App!
     <br />
-    <a href="https://github.com/tiluckdave/ClinifyForest"><strong>Explore the code »</strong></a>
+    <a href="https://github.com/Clinify-Open-Sauce/ClinifyForest"><strong>Explore the code »</strong></a>
     <br />
     <br />
     &nbsp;&nbsp;<a href="https://clinifyforest.herokuapp.com/">Visit the site</a>&nbsp;&nbsp;
     ·
-    &nbsp;&nbsp;<a href="https://github.com/tiluckdave/ClinifyForest/issues">Report Bug</a>&nbsp;&nbsp;
+    &nbsp;&nbsp;<a href="https://github.com/Clinify-Open-Sauce/ClinifyForest/issues">Report Bug</a>&nbsp;&nbsp;
     ·
-    &nbsp;&nbsp;<a href="https://github.com/tiluckdave/ClinifyForest/issues">Request Feature</a>&nbsp;&nbsp;
+    &nbsp;&nbsp;<a href="https://github.com/Clinify-Open-Sauce/ClinifyForest/issues">Request Feature</a>&nbsp;&nbsp;
   </p>
 </p>
 
@@ -62,13 +62,12 @@ Setting up the project locally maybe headache for the first time but believe me 
 
 ### Prerequisites
 
-Prequisites
 * Python
-  ```sh
+  ```shell
   Python version 3.9.2 is used in this project
   ```
 * Django installed globally
-  ```sh
+  ```shell
   pip install django -g
   ```
 * Postgres
@@ -77,27 +76,27 @@ Prequisites
   ```
   [PostGres](https://www.postgresql.org/download/windows/)
 * Virtualenv
-  ```sh
+  ```shell
   pip install virtualenv
   ```
 * You should compulsorily become a member of Clinify Squad Discord Server link ->
-  [Clinify Squad](https://clinify.in)
+  [Clinify Squad](https://bluelearn.in/discord)
  
 ### Installation
 
 1. Create a Virtual enviornment
-   ```sh
+   ```shell
    python -m venv csenv
    ```
-   ```sh
+   ```shell
    source ./csenv/Scripts/activate
    ```
 3. Clone the repo
-   ```sh
+   ```shell
    git clone https://github.com/tiluckdave/ClinifyForest.git
    ```
 3. Install requirements
-   ```sh
+   ```shell
    pip install -r requirements.txt
    ```
 4. Setup the database
@@ -105,24 +104,24 @@ Prequisites
    2. create and connect to localhost:5432
    3. setup new password for postgres
    4. run below command
-   ```
+   ```sql
    CREATE DATABASE clinifyforest;
    ```
 5. Creating a Discord Application
-   * visit [Discord Developers Portal](https://discord.com/developers/applications)
+   * Visit the [Discord Developers Portal](https://discord.com/developers/applications)
    * Login if you are not
-   * click on New application
+   * Click on "New Application"
    * Name your application whatever you want
-   * headover to `OAuth2` section and click on `Add Ridirect`
+   * Head over to `OAuth2` section and click on `Add Redirect`
    * Add this url `http://127.0.0.1:8000/login/redirect`
    * Click on `Save Changes`
    * Now under `OAuth2 URL Generator`
-   * Select redirect Url as `http://127.0.0.1:8000/login/redirect`
-   * Under scopes select `identify` and `guilds`
-   * A new url will be generated at the bottom Copy it!
+   * Select redirect url as `http://127.0.0.1:8000/login/redirect`
+   * Under scopes, select `identify` and `guilds`
+   * A new url will be generated at the bottom. Copy it!
    
-6. Enviornment Variables
-   * In the root folder where `manage.py` file lies create a new `.env` file
+6. Environment Variables
+   * In the root folder where `manage.py` file lies, create a new `.env` file
    * Paste the below text to `.env` file
    ```
    SECRET_KEY=secretkey
@@ -133,7 +132,7 @@ Prequisites
    DBHOST=localhost
    DBPORT=5432
    OAUTHURL=<your-oauth-url>
-   REDIRECT_URI=http://127.0.0.1:8000/login/redirect
+   REDIRECT_URL=http://127.0.0.1:8000/login/redirect
    CLINIFY_SERVER_ID=740589508365385839
    MY_DISCORD_CLIENT_ID=<your-discord-client-id>
    MY_DISCORD_CLIENT_SECRET=<your-discord-client-secret>
@@ -143,11 +142,11 @@ Prequisites
    * replace `<your-discord-client-id>` with your discord developers client id
    * replace `<your-discord-client-secret>` with your discord developers client secret
 7. Create local settings
-   * Open the folder in any of the code editor
-   * Head over to `ClinifyForest` Folder
+   * Open the folder in any code editor
+   * Head over to the `ClinifyForest` Folder
    * Create a new file called `local_settings.py`
-   * paste this code in the file
-   ```
+   * Paste this code in the file
+   ```python
    import os
    from .settings import BASE_DIR
    
@@ -159,26 +158,25 @@ Prequisites
    ```
    * save `local_settings.py`
 9. Make migrations
-   ```sh
+   ```shell
    python manage.py makemigrations
    ```
-   ```sh
+   ```shell
    python manage.py sqlmigrate login 0001
    python manage.py sqlmigrate main 0001
    python manage.py sqlmigrate search 0001
    ```
-   ```sh
+   ```shell
    python manage.py migrate
    ```
 10. Run the server
-    ```sh
+    ```shell
     python manage.py runserver
     ```
-    And You are good to go
-    Now visit [localhost:8000](http://127.0.0.1:8000)
+    Now you are good to go visit [localhost:8000](http://127.0.0.1:8000)
     
 11. Create Super User
-    ```sh
+    ```shell
     python manage.py createsuperuser
     ```
    
@@ -200,13 +198,13 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@tiluckdave](https://twitter.com/tiluckdave) - davetilak003@gmail.com
+Your Name - [@tiluckdave](https://twitter.com/tiluckdave) - 
 
 Discord Tag - @tiluckdave#4120
 
-Project Link: [https://github.com/tiluckdave/ClinifyForest](https://github.com/tiluckdave/ClinifyForest)
+Project Link: [https://github.com/Clinify-Open-Sauce/ClinifyForest](https://github.com/Clinify-Open-Sauce/ClinifyForest)
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [Clinify](https://clinify.in)
+* [bluelearn](https://bluelearn.in)

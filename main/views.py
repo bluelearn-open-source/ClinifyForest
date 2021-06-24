@@ -26,7 +26,10 @@ def home(request):
             if (hiddenval == -1):
                 coins = 20*int(rangec)
                 new_dead_trees = int(prev_dead_trees) + int(rangec)
-                new_coins = int(prev_coins) - int(coins)
+                if int(prev_coins) < int(coins):
+                    new_coins = 0
+                else:
+                    new_coins = int(prev_coins) - int(coins)
                 current_user.deadtrees = new_dead_trees
                 current_user.coins = new_coins
                 current_user.save()
@@ -66,7 +69,7 @@ def home(request):
     return render(request, 'main/home.html', params)
 
 def lb(request):
-    users = DiscordUser.objects.order_by('-trees', 'deadtrees').all()
+    users = DiscordUser.objects.order_by('-trees', 'deadtrees')[:50]
     params = {'users': users}
     if request.user.is_authenticated:
         params = {'loginuser': request.user, 'users': users}

@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from main.views import home, lb, store, reset, rooms, assetlinks
 from login.views import discord_logout, discord_login, discord_login_redirect
-from search.views import search
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,7 +31,6 @@ urlpatterns = [
     path('rooms/', include('rooms.urls')),
     path('clinifyforest/api/', include('api.urls')),
     path('reset', reset, name="reset"),
-    path('search', search, name="search"),
     path('login', discord_login, name='discord_login'),
     path('logout', discord_logout, name='discord_logout'),
     path('.well-known/assetlinks.json', assetlinks, name="assetlinks"),
