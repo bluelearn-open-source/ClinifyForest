@@ -9,7 +9,7 @@
   {% for user in users %}
 <div class="col-md-6 mx-auto">
   <div class="card text-dark bg-white my-3 mx-auto" style="max-width:500px;">
-    <div class="card-header bg-white d-flex justify-content-center">
+    <div class="card-header bg-white d-flex justify-content-center" style="padding:5px;">
             <span class="text-primary display-6">#</span> <span class="display-5">{{forloop.counter}}
             <span style="font-size: 23px;font-weight:600;">{{user.discord_tag}}</span>
             </span>
@@ -38,16 +38,16 @@
           />{% endif %} {% endcomment %}
           </strong>
     </div>
-    <div class="card-body">
-<ul class="nav justify-content-center">
+    <div class="card-body" style="padding:3px;">
+<ul class="nav justify-content-center" >
   <li class="nav-item">
-    <span class="nav-link" style="font-size:33px;" ><i class="fas fa-tree" style="color:green;"></i> {{user.trees}}</span>
+    <span class="nav-link" style="font-size:30px;" ><i class="fas fa-tree" style="color:green;"></i> {{user.trees}}</span>
   </li>
   <li class="nav-item">
-    <span class="nav-link" style="font-size:33px;" ><i class="fas fa-tree" style="color:brown;"></i> {{user.deadtrees}}</span>
+    <span class="nav-link" style="font-size:30px;" ><i class="fas fa-tree" style="color:brown;"></i> {{user.deadtrees}}</span>
   </li>
   <li class="nav-item">
-    <span class="nav-link" style="font-size:33px;" ><i class="fas fa-dollar-sign" style="color:gold;"></i> {{user.coins}}</span>
+    <span class="nav-link" style="font-size:30px;" ><i class="fas fa-dollar-sign" style="color:gold;"></i> {{user.coins}}</span>
     </li>
 </ul>  
 
