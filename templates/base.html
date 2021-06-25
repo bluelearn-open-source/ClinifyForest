@@ -57,10 +57,10 @@
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#userModal" type="button" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                                 {% if loginuser.avatar %}
                                 <img src="https://cdn.discordapp.com/avatars/{{loginuser.id}}/{{loginuser.avatar}}.png" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';" alt="Profile image of loggedin user"
-                                    width="28px" style="border-radius: 50%;">
+                                    width="28px" height="28px" style="border-radius: 50%;">
                                 {% else %}
                                 <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU" width="28px" alt="default profile image"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU" width="28px" height="28px" alt="default profile image"
                                     style="border-radius: 50%;">
                                 {% endif %}
                                     &nbsp;&nbsp;<strong>{{loginuser.discord_tag}}</strong>
@@ -84,10 +84,10 @@
                 <h5 class="modal-title" id="userModalLabel">
                 {% if loginuser.avatar %}
                                 <img src="https://cdn.discordapp.com/avatars/{{loginuser.id}}/{{loginuser.avatar}}.png" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';" alt="Profile image of loggedin user"
-                                    width="30px" style="border-radius: 50%;margin-right:10px;">
+                                    width="30px" height="30PX" style="border-radius: 50%;margin-right:10px;">
                                 {% else %}
                                 <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU" width="30px" alt="Default profile image"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU" width="30px" height="30px" alt="Default profile image"
                                     style="border-radius: 50%; margin-right:10px;">
                                 {% endif %}
                     {{loginuser.discord_tag}}</h5>

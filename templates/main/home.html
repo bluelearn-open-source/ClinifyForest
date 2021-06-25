@@ -18,6 +18,7 @@
 
   <form action="/" method="post" name="getrange">
     {% csrf_token %}
+    <label for="range" style="color:transparent; font-size:1px;">Range</label><br>
     <input type="range" value=1 onclick="checkr()" onchange="checkr()" id="range" style="width: 300px !important;"
       name="range" class="form-range" width="200px" min="1" max="6">
     <input type="hidden" name="hidden" id="hidden" value=0>
