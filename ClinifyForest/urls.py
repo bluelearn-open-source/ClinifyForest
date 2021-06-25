@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from main.views import home, lb, store, reset, rooms, assetlinks, sitemap
+from main.views import home, lb, store, reset, rooms, assetlinks, sitemap, getFile
 from login.views import discord_logout, discord_login, discord_login_redirect
 
 
@@ -35,5 +35,6 @@ urlpatterns = [
     path('login', discord_login, name='discord_login'),
     path('logout', discord_logout, name='discord_logout'),
     path('.well-known/assetlinks.json', assetlinks, name="assetlinks"),
+    path('.well-known/acme-challenge/gh_tJXTn4rJpdW_d-DISLhisFG5QG380e6gMGqd6QOE', getFile),
     path('login/redirect', discord_login_redirect, name='discord_login_redirect'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

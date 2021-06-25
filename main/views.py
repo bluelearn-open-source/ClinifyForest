@@ -1,5 +1,5 @@
 from django.db.models.fields import DateTimeField
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from login.models import DiscordUser
 from .models import Store
@@ -140,3 +140,7 @@ def assetlinks(request):
 
 def sitemap(request):
     return render(request, 'sitemap.xml', content_type="text/xml")
+
+def getFile(request):
+    acmeFile = "gh_tJXTn4rJpdW_d-DISLhisFG5QG380e6gMGqd6QOE.7auUOcRJDGxBFZGXdFcifizjWuT8hvR8Fpm-RT5i-UI"
+    return HttpResponse(acmeFile, content_type='text/plain')
