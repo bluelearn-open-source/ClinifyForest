@@ -17,7 +17,8 @@
   font-size: 24px;
   font-weight: bold;
 }
-.status {
-  padding: 6px;
-  top: 6px;
+.pfp_img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
