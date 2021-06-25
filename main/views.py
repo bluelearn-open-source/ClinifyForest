@@ -137,3 +137,6 @@ def assetlinks(request):
         }
     ]
     return JsonResponse(response_data, safe=False)
+
+def sitemap(request):
+    return render(request, 'sitemap.xml', content_type="text/xml")
