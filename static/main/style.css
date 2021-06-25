@@ -1,7 +1,6 @@
 .show_message {
   display: block;
 }
-
 #timer {
   width: 200px;
   background-color: #fff;
@@ -9,11 +8,9 @@
   border-radius: 50%;
   border: 10px solid #fff;
 }
-
 .white-text-timer {
   color: #0d6efd !important;
 }
-
 #card {
   width: 30%;
 }

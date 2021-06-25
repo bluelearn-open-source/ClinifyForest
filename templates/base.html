@@ -2,6 +2,7 @@
 <html lang="en">
 {% load static %}
 {% load pwa %}
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,19 +11,19 @@
     <meta name=”robots” content=”index, follow”>
     <meta name="twitter:title" content="blueforest">
     <meta name="google-site-verification" content="csoI53o6KYExBmUUJm52ae-G-NVYVeu3rvJui54sbvo" />
-<meta name="twitter:description" content="blueforest is a study pomodoro app made for study buddies of bluelearn community">
+    <meta name="twitter:description"
+        content="blueforest is a study pomodoro app made for study buddies of bluelearn community">
 
     <link rel="canonical" href="https://clinifyforest.herokuapp.com/" />
-    {% comment %} <link rel="canonical" href="http://127.0.0.1/" /> {% endcomment %}
+    {% comment %}
+    <link rel="canonical" href="http://127.0.0.1/" /> {% endcomment %}
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="shortcut icon"
-        href="{% static 'bf.ico' %}"
-        type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'bf.ico' %}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/b8d0e12a1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    
+
     {% block style %}{% endblock style %}
 
     {% progressive_web_app_meta %}
@@ -36,34 +37,38 @@
         <div class="container">
             <a class="navbar-brand mb-0 h1" href="{% url 'home' %}"><span class="text-primary">blue</span>forest</a>
 
-            <i class="fas fa-bars navbar-toggler" style="border:none; color:black;" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"></i>
+            <i class="fas fa-bars navbar-toggler" style="border:none; color:black;" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></i>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    
+
                     <li class="nav-item ">
                         <a class="nav-link {% block lbactive %}{% endblock lbactive %}"
                             href="{% url 'lb' %}">Leaderboard</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link {% block stactive %}{% endblock stactive %}" href="{% url 'store' %}">Store</a>
+                        <a class="nav-link {% block stactive %}{% endblock stactive %}"
+                            href="{% url 'store' %}">Store</a>
                     </li>
                 </ul>
                 <div>
                     {% if loginuser %}
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#userModal" type="button" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#userModal"
+                                type="button"
+                                style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                                 {% if loginuser.avatar %}
-                                <img src="https://cdn.discordapp.com/avatars/{{loginuser.id}}/{{loginuser.avatar}}.png" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';" alt="Profile image of loggedin user"
-                                    width="28px" height="28px" style="border-radius: 50%;">
-                                {% else %}
-                                <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU" width="28px" height="28px" alt="default profile image"
+                                <img src="https://cdn.discordapp.com/avatars/{{loginuser.id}}/{{loginuser.avatar}}.png"
+                                    onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';"
+                                    alt="Profile image of loggedin user" width="28px" height="28px"
                                     style="border-radius: 50%;">
+                                {% else %}
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU"
+                                    width="28px" height="28px" alt="default profile image" style="border-radius: 50%;">
                                 {% endif %}
-                                    &nbsp;&nbsp;<strong>{{loginuser.discord_tag}}</strong>
+                                &nbsp;&nbsp;<strong>{{loginuser.discord_tag}}</strong>
                             </a>
                         </li>
                     </ul>
@@ -76,62 +81,69 @@
     </nav>
 
     <!-- Profile Modal -->
-    <div class="modal fade" id="userModal" tabindex="-1"
-        aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="userModalLabel">
-                {% if loginuser.avatar %}
-                                <img src="https://cdn.discordapp.com/avatars/{{loginuser.id}}/{{loginuser.avatar}}.png" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';" alt="Profile image of loggedin user"
-                                    width="30px" height="30PX" style="border-radius: 50%;margin-right:10px;">
-                                {% else %}
-                                <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU" width="30px" height="30px" alt="Default profile image"
-                                    style="border-radius: 50%; margin-right:10px;">
-                                {% endif %}
-                    {{loginuser.discord_tag}}</h5>
+                    <h5 class="modal-title" id="userModalLabel">
+                        {% if loginuser.avatar %}
+                        <img src="https://cdn.discordapp.com/avatars/{{loginuser.id}}/{{loginuser.avatar}}.png"
+                            onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';"
+                            alt="Profile image of loggedin user" width="30px" height="30PX"
+                            style="border-radius: 50%;margin-right:10px;">
+                        {% else %}
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU"
+                            width="30px" height="30px" alt="Default profile image"
+                            style="border-radius: 50%; margin-right:10px;">
+                        {% endif %}
+                        {{loginuser.discord_tag}}
+                    </h5>
 
-                    <i class="fas fa-times" style="zoom:1.2;" type="button" data-bs-dismiss="modal" aria-label="Close"></i>
+                    <i class="fas fa-times" style="zoom:1.2;" type="button" data-bs-dismiss="modal"
+                        aria-label="Close"></i>
                 </div>
                 <div class="modal-body">
-                <h4>Badges</h4>
-                <ul class="nav justify-content-center">
-                  <li class="nav-item">
-                  {% if request.user.room_access %}
-                    <span class="badge bg-danger m-2">Room Access</span>
-                    {% endif %}
-                  </li>
-                  <li class="nav-item">
-                  {% if request.user.room_admin %}
-                    <span class="badge bg-secondary m-2">Room Admin</span>
-                    {% endif %}
-                  </li>
-                  <li class="nav-item">
-                  
-                    {% if user.slowmode %}
-                    <span class="badge bg-primary m-2">Slowmode Enabled</span>
-                    {% endif %}
-                    
-                  </li>
-                </ul>
-                     
-                    
-<h4>Stats</h4>
-<ul class="nav justify-content-center">
-  <li class="nav-item">
-    <span class="nav-link" style="font-size:38px;"><i class="fas fa-tree" style="color:green;"></i> {{request.user.trees}}</span>
-  </li>
-  <li class="nav-item">
-    <span class="nav-link" style="font-size:38px;"><i class="fas fa-tree" style="color:brown;"></i> {{request.user.deadtrees}}</span>
-  </li>
-  <li class="nav-item">
-    <span class="nav-link" style="font-size:38px;"><i class="fas fa-dollar-sign" style="color:gold;"></i> {{request.user.coins}}</span>
-    </li>
-  <li class="nav-item">
-    <span class="nav-link" style="font-size:38px;"><i class="fas fa-level-up-alt" style="color:blue;"></i> {{request.user.level}}</span>
-    </li>
-</ul>
+                    <h4>Badges</h4>
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            {% if request.user.room_access %}
+                            <span class="badge bg-danger m-2">Room Access</span>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item">
+                            {% if request.user.room_admin %}
+                            <span class="badge bg-secondary m-2">Room Admin</span>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item">
+
+                            {% if user.slowmode %}
+                            <span class="badge bg-primary m-2">Slowmode Enabled</span>
+                            {% endif %}
+
+                        </li>
+                    </ul>
+
+
+                    <h4>Stats</h4>
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <span class="nav-link" style="font-size:38px;"><i class="fas fa-tree"
+                                    style="color:green;"></i> {{request.user.trees}}</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link" style="font-size:38px;"><i class="fas fa-tree"
+                                    style="color:brown;"></i> {{request.user.deadtrees}}</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link" style="font-size:38px;"><i class="fas fa-dollar-sign"
+                                    style="color:gold;"></i> {{request.user.coins}}</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link" style="font-size:38px;"><i class="fas fa-level-up-alt"
+                                    style="color:blue;"></i> {{request.user.level}}</span>
+                        </li>
+                    </ul>
 
 
 
@@ -140,34 +152,38 @@
                 </div>
                 <div class="modal-footer">
 
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Reset Profile</a>
-
-                
-                                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">Update</a>
-        <a type="button" href="{% url 'discord_logout' %}" class="btn btn-danger">Logout</a>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">Reset Profile</a>
 
 
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample1" role="button"
+                        aria-expanded="false" aria-controls="collapseExample1">Update</a>
+                    <a type="button" href="{% url 'discord_logout' %}" class="btn btn-danger">Logout</a>
 
-        <div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    Are You sure you want to reset your profile. Your all progress will be lost.This process is irreversible.
-    <a class="btn btn-primary mt-2" href="{% url 'reset' %}">Yes, Reset</a>
-  </div>
-</div>
-        <div class="collapse" id="collapseExample1">
-  <div class="card card-body">
-    Updating your profile wil change and update your profile picture and discord username to what you have recently set on Discord.
-                    You will be logged out and hence kindly login again to see reflected changes.
-                    This process is irreversible.
-    <a class="btn btn-primary mt-2" href="{% url 'discord_logout' %}">Yes, Update</a>
-  </div>
-</div>
+
+
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            Are You sure you want to reset your profile. Your all progress will be lost.This process is
+                            irreversible.
+                            <a class="btn btn-primary mt-2" href="{% url 'reset' %}">Yes, Reset</a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapseExample1">
+                        <div class="card card-body">
+                            Updating your profile wil change and update your profile picture and discord username to
+                            what you have recently set on Discord.
+                            You will be logged out and hence kindly login again to see reflected changes.
+                            This process is irreversible.
+                            <a class="btn btn-primary mt-2" href="{% url 'discord_logout' %}">Yes, Update</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-  
+
     {% block body %}{% endblock body %}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -175,14 +191,14 @@
         crossorigin="anonymous"></script>
     {% block script %}{% endblock script %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DNBD92ZYDD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DNBD92ZYDD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-DNBD92ZYDD');
-</script>
+        gtag('config', 'G-DNBD92ZYDD');
+    </script>
 
 </body>
 
