@@ -35,7 +35,7 @@
                             <button class="btn btn-primary" type="submit">Buy Now</button>
                         </form>
                             {% else %}
-                                <a class="btn btn-primary" href="/">Earn More</a>
+                                <a class="btn btn-primary" href="{% url 'home' %}">Earn More</a>
                             {% endif %}
                     {% endif %}
                 {% endif %}
@@ -48,7 +48,7 @@
                     <button class="btn btn-primary" type="submit">Buy Now</button>
                 </form>
                     {% else %}
-                        <a class="btn btn-primary" href="/">Earn More</a>
+                        <a class="btn btn-primary" href="{% url 'home' %}">Earn More</a>
                     {% endif %}
                 {% else %}
                 You have no dead trees
@@ -65,7 +65,7 @@
                             <button class="btn btn-primary" type="submit">Buy Now</button>
                         </form>
                             {% else %}
-                            <a class="btn btn-primary" href="/">Earn More</a>
+                            <a class="btn btn-primary" href="{% url 'home' %}">Earn More</a>
                         {% endif %}
                     {% endif %}
                 {% endif %}
