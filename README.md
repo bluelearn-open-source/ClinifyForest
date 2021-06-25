@@ -3,7 +3,7 @@
   <h1 align="center">blueforest</h1>
 
   <p align="center">
-    bluelearn Exclusive Forest App!
+    bluelearn Exclusive Forest App!!
     <br />
     <a href="https://github.com/Clinify-Open-Sauce/ClinifyForest"><strong>Explore the code »</strong></a>
     <br />
