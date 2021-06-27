@@ -20,8 +20,11 @@
   font-size: 24px;
   font-weight: bold;
 }
+.pfp_div {
+  height: 40px;
+  width: 40px;
+}
 .pfp_img {
   height: 40px;
   width: 40px;
-  border-radius: 50%;
 }
