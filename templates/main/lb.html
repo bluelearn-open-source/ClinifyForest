@@ -1,56 +1,71 @@
 {% extends 'base.html' %}
 {% block title %}Leader Board{% endblock title %}
 {% block lbactive %}active{% endblock lbactive %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'main/style.css' %}">
+{% endblock style %}
+
 {% block body %}
-
-<div class="container mb-5">
-    <h1 class="text-black text-center my-5">Leader Board</h1>
-    <div class="row mx-auto">
-        {% for user in users %}
-        <div class="col-md-6 mx-auto">
-            <div class="card text-dark bg-white my-3 mx-auto" style="max-width:520px;">
-                <div class="card-body d-flex flex-column" style="padding:3px;">
-                    <div class="align-self-center">
-                        <span class="text-primary display-6">#</span> <span class="display-5">{{forloop.counter}}</span>
-                        <span style="font-size: 23px;font-weight:600;">{{user.discord_tag}}</span>
-                    </div>
-                    {% if user.in_session %}
-                    <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-                        Planting
-                    </span>
-                    {% else %}
-                    <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
-                        Idle
-                    </span>
-                    {% endif %}
-                    {% comment %} {% if user.avatar %}
-                    <img class="align-middle" src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}.png"
-                        onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';"
-                        style="border-radius: 50%; width:98px; position:absolute; top:-20%; left:0;" />
-                    {% else %}
-                    <img class="align-middle"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU"
-                        style="border-radius: 50%; width:98px; position:absolute;" />
-                    {% endif %} {% endcomment %}
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <span class="nav-link" style="font-size:30px;"><i class="fas fa-tree"
-                                    style="color:green;"></i> {{user.trees}}</span>
-                        </li>
-                        <li class="nav-item">
-                            <span class="nav-link" style="font-size:30px;"><i class="fas fa-tree"
-                                    style="color:brown;"></i> {{user.deadtrees}}</span>
-                        </li>
-                        <li class="nav-item">
-                            <span class="nav-link" style="font-size:30px;"><i class="fas fa-dollar-sign"
-                                    style="color:gold;"></i> {{user.coins}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="container my-5">
+      <div class="row mx-0">
+        <div class="col-12 my-2">
+          <h2 class="text-center"><strong>LeaderBoard</strong></h2>
         </div>
-        {% endfor %}
+        <div class="col-12 col-lg-10  mb-3 offset-lg-1 text-center">
+          <p class="mb-4">
+            <small><i class="fas fa-circle ms-2 text-success"></i></small>
+            Planting tree
+            <small><i class="fas fa-circle ms-2 text-danger"></i></small>
+            Idle
+          </p>
+        </div>
+        {% for user in users %}
+        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card position-relative">
+          <div class="row mx-0 align-items-center">
+            <div class="col-12 col-lg-6 mb-3 mb-md-0 text-center text-lg-start">
+              <!-- rank -->
+              <h5 class="mb-0 me-1 lb_username d-inline align-middle">{{forloop.counter}}</h5>
+              <!-- pfp with status badge -->
+              <div class="d-inline position-relative">
+                {% if user.avatar %}
+                    <img class="pfp_img rounded-circle" src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}.png"
+                        onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU';"
+                        />
+                    {% else %}
+                    <img class="pfp_img rounded-circle"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HUdSftvG85fuI66IATbkxbD-cH7NrfGP7p-qX8tUJjgezF6iVjAvWcb5WO7gzCWVeNk&usqp=CAU"
+                         />
+                    {% endif %}
+                    {% if user.in_session %}
+                <span class="badge-size position-absolute translate-middle bg-success border border-2 border-white rounded-circle status"></span>
+                {% else %}
+                <span class="badge-size position-absolute translate-middle bg-danger border border-2 border-white rounded-circle status"></span>
+                {% endif %}
+              </div>
+              <!-- username -->
+              <h5 class="mb-0 lb_username d-inline align-middle px-2">{{user.discord_tag|slice:":-5"}} <span class="text-secondary">{{user.discord_tag|slice:"-5:"}}</span></h5>
+            </div>
+            <div class="col-4 col-lg-2">
+              <i class="fas fa-tree text-success"></i>
+              <strong>{{user.trees}} </strong>
+              <small class="text-secondary d-none d-md-inline">Planted</small>
+            </div>
+            <div class="col-4 col-lg-2 text-center text-lg-start">
+              <i class="fas fa-tree text-danger"></i>
+              <strong>{{user.deadtrees}} </strong>
+              <small class="text-secondary d-none d-md-inline">Killed</small>
+            </div>
+            <div class="col-4 col-lg-2 text-end">
+              <i class="fas fa-dollar-sign text-warning"></i>
+              <strong>{{user.coins}} </strong>
+              <small class="text-secondary d-none d-md-inline">Coins</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}     
+      </div>
     </div>
-</div>
-
 {% endblock body %}

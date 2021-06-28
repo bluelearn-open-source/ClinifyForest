@@ -12,9 +12,10 @@
 {% block body %}
 
 
+    {% if loginuser %}
 <!-- Main Timer -->
 <div class="container px-5 d-flex justify-content-center align-items-center flex-column"
-    style="height: calc(100vh - 60px);">
+    style="height: calc(100vh - 90px);">
 
     <form action="/" method="post" name="getrange">
         {% csrf_token %}
@@ -26,10 +27,25 @@
 
 
     <div>
-        <div class="text-center text-black my-2 h6" id="treesinfo">Plants 1 tree if you fail, you kill 1 tree</div>
         <div class="text-center text-black my-2 h6" id="coinsinfo">
-            <div>Success: +25 coins</div>
-            <div>Failure: -20 coins</div>
+            <div class="pb-2">
+                <strong>
+                    Success:
+                    <i class="fas fa-dollar-sign text-warning"></i>
+                    25 Coins & 
+                    <i class="fas fa-tree text-success"></i>
+                    1 Tree
+                </strong>
+            </div>
+            <div class="pt-2">
+                <strong>
+                    Failure:
+                    <i class="fas fa-dollar-sign text-warning"></i>
+                    -25 Coins & 
+                    <i class="fas fa-tree text-danger"></i>
+                    1 DeadTree
+                </strong>
+            </div>
         </div>
     </div>
 
@@ -39,20 +55,15 @@
             <span class="visually-hidden">Loading...</span>
         </div>
         {% else %}
-        <h4 id="minutes" class="display-4 text-black">30</h4>
-        <h4 id="separator" class="display-4 text-black">:</h4>
-        <h4 id="seconds" class="display-4 text-black">00</h4>
+        <h4 id="minutes" class="display-5 text-black">30</h4>
+        <h4 id="separator" class="display-5 text-black px-1">:</h4>
+        <h4 id="seconds" class="display-5 text-black">00</h4>
         {% endif %}
     </div>
 
-    {% comment %} <strong class="text-warning text-center h6">Deep Focus Mode Will be Back Soon</strong> {% endcomment %}
-    {% if request.user.slowmode %}
-    <strong class="text-black text-center h6">You are on slowmode. You will get no trees and 10 coins every 30
-        minutes</strong>
-    {% endif %}
-    {% if loginuser %}
+    
     <button class="btn btn-primary mt-3" id="startbtn" onclick="document.getrange.submit()">
-        start
+        Start
     </button>
     <button class="btn btn-primary d-none mt-3" data-bs-toggle="modal" data-bs-target="#diedtreemodal" id="giveupbtn">
         Giveup
@@ -60,12 +71,14 @@
     <button class="btn btn-secondary d-none mt-3" onclick="canceltimer()" id="cancelbtn">
         Cancel
     </button>
-    {% else %}
-    <strong class="text-black text-center">Please Login to continue<br>Only <a
-            href="https://bluelearn.in/">bluelearn</a> members can login<br><a href="https://bluelearn.in/discord">Click
-            here</a> to join the exclusive community</strong>
-    {% endif %}
 </div>
+    {% else %}
+<div class="container d-flex justify-content-center align-items-center" style="height: calc(100vh - 120px);">
+    <strong class="text-black text-center">Login to continue<br>
+    Not able to login?
+            <a href="https://bluelearn.in/discord">Join our discord server</a></strong>
+</div>
+    {% endif %}
 
 
 

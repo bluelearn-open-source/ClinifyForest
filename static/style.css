@@ -9,3 +9,16 @@
   background: #0d6efd;
   border-radius: 30px;
 }
+
+* {
+  font-family: "Montserrat", "sans-serif";
+}
+.text_primary {
+  color: #3d5aff;
+}
+.nav-link {
+  color: #000 !important;
+}
+.nav-link.active {
+  font-weight: bold;
+}

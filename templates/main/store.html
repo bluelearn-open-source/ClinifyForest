@@ -13,17 +13,22 @@
 {% block body %}
 
 <div class="container">
-    <h1 class="text-black text-center mt-5">Store</h1>
-
     <div class="row my-5">
+
+<div class="col-12 mt-2 mb-5">
+          <h2 class="text-center"><strong>Store</strong></h2>
+        </div>
+        
+
         {% for storeitem in store %}
         <div class="col-md-4">
-            <div class="card mt-2">
+            <div class="card lb_card mt-2" style="min-height:280px;">
                 <div class="card-body">
-                    <h5 class="card-title">{{storeitem.item_name}}</h5>
+                    <h5 class="card-title lb_username ">{{storeitem.item_name}}</h5>
                     <h5 class="card-title text-primary fw-bold">for {{storeitem.item_price}} coins</h5>
-                    <p class="card-text">{{storeitem.item_desc}}</p>
-                    <div class="card-footer bg-white">
+                    <p class="card-text text-secondary">{{storeitem.item_desc}}</p>
+                    </div>
+                    <div class="card-footer bg-white" style="min-height:60px;" >
                         {% if storeitem.item_name == 'Room Access' %}
                         {% if request.user.room_access %}
                         You already Own this item
@@ -70,7 +75,7 @@
                         {% endif %}
                         {% endif %}
                     </div>
-                </div>
+                
             </div>
         </div>
         {% endfor %}
