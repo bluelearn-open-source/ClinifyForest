@@ -34,300 +34,63 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item ">
-                      <a class="nav-link active"
+                      <a class="nav-link"
                           href="#">Leaderboard</a>
                   </li>
-                  <li class="nav-item ">
-                      <a class="nav-link" href="#">Store</a>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="#">Store</a>
                   </li>
               </ul>
           </div>
       </div>
     </nav>
 
-    <div class="container mb-5">
-      <div class="row mx-0">
-        <div class="col-12 my-2">
-          <h2 class="text-center"><strong>LeaderBoard</strong></h2>
+    <div class="container my-5">
+      <div class="row mx-0 mb-4">
+        <div class="col-12">
+          <h2 class="text-center mb-3"><strong>Store</strong></h2>
+          <h5 class="text-center"><strong><span class="text_primary">Balance</span> : 500 Coins</strong></h5>
         </div>
-        <div class="col-12 col-lg-10 offset-lg-1 text-center">
-          <p class="mb-4">
-            <small><i class="fas fa-circle ms-2 text-success"></i></small>
-            Planting tree
-            <small><i class="fas fa-circle ms-2 text-warning"></i></small>
-            Online
-            <small><i class="fas fa-circle ms-2 text-danger"></i></small>
-            Offline
-          </p>
-        </div>
-        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card position-relative">
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <!-- rank -->
-              <h5 class="mb-0 me-1 lb_username d-inline align-middle">1</h5>
-              <!-- pfp with status badge -->
-              <div class="d-inline position-relative">
-                <img src="./profile.jpeg" alt="" class="pfp_img rounded-circle">
-                <span class="position-absolute top-0 end-0 p-1 translate-middle bg-danger border border-light rounded-circle status"></span>
-              </div>
-              <!-- username -->
-              <h5 class="mb-0 lb_username d-inline align-middle">Martian <span class="text-secondary">#9456</span></h5>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>857</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>12</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>15000</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
+      </div>
+      <div class="row mx-0 justify-content-center">
+        <!-- card component -->
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+          <div class="card lb_card p-3">
+            <h5><strong>Room Access</strong></h5>
+            <p class="text-secondary store_body">
+              Get Access to ClinifyForest rooms and enjoy study sessions with your Clinify Study Buddies. Purchasing this item will give you access to group sessions on ClinifyForest
+              Get Access to ClinifyForest rooms and enjoy study sessions with your Clinify Study Buddies. Purchasing this item will give you access to group sessions on ClinifyForest
+            </p>
+            <button class="btn btn_primary btn-block mb-2">199 Coins</button>
+            <!-- transaction possible status -->
+            <small class="text-center text-success">You have sufficient coins</small>
           </div>
         </div>
-        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card">
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <!-- rank -->
-              <h5 class="mb-0 me-1 lb_username d-inline align-middle">2</h5>
-              <!-- pfp with status badge -->
-              <div class="d-inline position-relative">
-                <img src="./profile.jpeg" alt="" class="pfp_img rounded-circle">
-                <span class="position-absolute top-0 end-0 p-1 translate-middle bg-success border border-light rounded-circle status"></span>
-              </div>
-              <!-- username -->
-              <h5 class="mb-0 mr-2 lb_username d-inline">tiluckdave <span class="text-secondary">#4120</span></h5>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>196</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>12</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>3418</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+          <div class="card lb_card p-3">
+            <h5><strong>Room Admin</strong></h5>
+            <p class="text-secondary store_body">
+              Only Admins can start the group study sessions on ClinifyForest. Purchasing this item will give you the power to start group study sessions.
+            </p>
+            <!-- button has disabled attribute. -->
+            <button class="btn btn-secondary btn-block mb-2" disabled>999 Coins</button>
+            <!-- transaction not possible status -->
+            <small class="text-center text-danger">Insufficient coins. <a href="./fonderupp-leaderboard.html" class="text_primary">Earn more</a></small>
           </div>
         </div>
-        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card">
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <!-- rank -->
-              <h5 class="mb-0 me-1 lb_username d-inline align-middle">3</h5>
-              <!-- pfp with status badge -->
-              <div class="d-inline position-relative">
-                <img src="./profile.jpeg" alt="" class="pfp_img rounded-circle">
-                <span class="position-absolute top-0 end-0 p-1 translate-middle bg-success border border-light rounded-circle status"></span>
-              </div>
-              <!-- username -->
-              <h5 class="mb-0 mr-2 lb_username d-inline">divyanshagarwal80 <span class="text-secondary">#7985</span></h5>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>140</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>12</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>3500</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+          <div class="card lb_card p-3">
+            <h5><strong>Water Trees</strong></h5>
+            <p class="text-secondary store_body">
+              Watering your trees will revive your one dead tree.
+            </p>
+            <!-- if instead of button this needs to be anchor tag
+            this is the syntax of having a disabled link
+            there still might be leaks which need to be closed using javascript -->
+            <a href="#" class="btn btn-secondary disabled mb-2" tabindex="-1" role="button" aria-disabled="true">50 Coins</a>
+            <small class="text-center text-danger">All trees alive</small>
           </div>
         </div>
-        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card">
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <!-- rank -->
-              <h5 class="mb-0 me-1 lb_username d-inline align-middle">4</h5>
-              <!-- pfp with status badge -->
-              <div class="d-inline position-relative">
-                <img src="./profile.jpeg" alt="" class="pfp_img rounded-circle">
-                <span class="position-absolute top-0 end-0 p-1 translate-middle bg-warning border border-light rounded-circle status"></span>
-              </div>
-              <!-- username -->
-              <h5 class="mb-0 mr-2 lb_username d-inline">jaylalakiya <span class="text-secondary">#1889</span></h5>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>158</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>12</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>2408</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card">
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <!-- rank -->
-              <h5 class="mb-0 me-1 lb_username d-inline align-middle">5</h5>
-              <!-- pfp with status badge -->
-              <div class="d-inline position-relative">
-                <img src="./profile.jpeg" alt="" class="pfp_img rounded-circle">
-                <span class="position-absolute top-0 end-0 p-1 translate-middle bg-success border border-light rounded-circle status"></span>
-              </div>
-              <!-- username -->
-              <h5 class="mb-0 mr-2 lb_username d-inline">fonderupp <span class="text-secondary">#4077</span></h5>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>74</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>0</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>2800</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card">
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <!-- rank -->
-              <h5 class="mb-0 me-1 lb_username d-inline align-middle">6</h5>
-              <!-- pfp with status badge -->
-              <div class="d-inline position-relative">
-                <img src="./profile.jpeg" alt="" class="pfp_img rounded-circle">
-                <span class="position-absolute top-0 end-0 p-1 translate-middle bg-warning border border-light rounded-circle status"></span>
-              </div>
-              <!-- username -->
-              <h5 class="mb-0 mr-2 lb_username d-inline">.Yog <span class="text-secondary">#7840</span></h5>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>31</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>0</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>775</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card">
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <!-- rank -->
-              <h5 class="mb-0 me-1 lb_username d-inline align-middle">7</h5>
-              <!-- pfp with status badge -->
-              <div class="d-inline position-relative">
-                <img src="./profile.jpeg" alt="" class="pfp_img rounded-circle">
-                <span class="position-absolute top-0 end-0 p-1 translate-middle bg-danger border border-light rounded-circle status"></span>
-              </div>
-              <!-- username -->
-              <h5 class="mb-0 mr-2 lb_username d-inline">manav <span class="text-secondary">#6235</span></h5>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>18</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>12</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>450</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card">
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <!-- rank -->
-              <h5 class="mb-0 me-1 lb_username d-inline align-middle">8</h5>
-              <!-- pfp with status badge -->
-              <div class="d-inline position-relative">
-                <img src="./profile.jpeg" alt="" class="pfp_img rounded-circle">
-                <span class="position-absolute top-0 end-0 p-1 translate-middle bg-success border border-light rounded-circle status"></span>
-              </div>
-              <!-- username -->
-              <h5 class="mb-0 mr-2 lb_username d-inline">Paradox <span class="text-secondary">#2203</span></h5>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>21</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>1</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>300</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
-          </div>
-        </div>
-
-        <!-- this card has badge -->
-        <!-- <div class="col-12 col-lg-10 offset-lg-1 bg-white card py-3 mb-2 lb_card position-relative">
-          <span class="position-absolute top-0 start-0 p-1 translate-middle bg-danger border border-light rounded-circle"></span>
-          <div class="row mx-0 align-items-center">
-            <div class="col-12 col-lg-6 mb-2 mb-md-0 text-center text-lg-start">
-              <h5 class="mb-0 mr-2 lb_username d-inline">chirag <span class="text-secondary">#1200</span></h5>
-              
-              // this is planting/online statunot looking good but kept it if required
-              <h6 class="mb-0 d-inline"><span class="badge rounded-pill bg-success">Planting</span></h6>
-            </div>
-            <div class="col-4 col-lg-2">
-              <i class="fas fa-tree text-success"></i>
-              <strong>31</strong>
-              <small class="text-secondary d-none d-xxl-inline">Planted</small>
-            </div>
-            <div class="col-4 col-lg-2 text-center text-lg-start">
-              <i class="fas fa-tree text-danger"></i>
-              <strong>12</strong>
-              <small class="text-secondary d-none d-xxl-inline">Killed</small>
-            </div>
-            <div class="col-4 col-lg-2 text-end">
-              <i class="fas fa-dollar-sign text-warning"></i>
-              <strong>456</strong>
-              <small class="text-secondary d-none d-xxl-inline">Coins</small>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
 
