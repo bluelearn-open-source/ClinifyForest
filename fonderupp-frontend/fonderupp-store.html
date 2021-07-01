@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="blueforest is a study pomodoro app made for study buddies of bluelearn community">
+    <meta name=”robots” content=”index, follow”>
+    <meta name="twitter:title" content="blueforest">
+    <meta name="google-site-verification" content="csoI53o6KYExBmUUJm52ae-G-NVYVeu3rvJui54sbvo" />
+    <meta name="twitter:description" content="blueforest is a study pomodoro app made for study buddies of bluelearn community">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/b8d0e12a1c.js" crossorigin="anonymous"></script>
+
+    <!-- Montserrat font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    <link rel="stylesheet" href="fonderupp-styles.css">
+    
+    <title>blueforest | leaderboard</title>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="Mynavbar">
+      <div class="container">
+          <a class="navbar-brand mb-0 h1" href="#"><strong><span class="text_primary">blue</span>forest</strong></a>
+
+          <i class="fas fa-bars navbar-toggler" style="border:none; color:black;" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation"></i>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item ">
+                      <a class="nav-link"
+                          href="#">Leaderboard</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="#">Store</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <div class="row mx-0 mb-4">
+        <div class="col-12">
+          <h2 class="text-center mb-3"><strong>Store</strong></h2>
+          <h5 class="text-center"><strong><span class="text_primary">Balance</span> : 500 Coins</strong></h5>
+        </div>
+      </div>
+      <div class="row mx-0 justify-content-center">
+        <!-- card component -->
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+          <div class="card lb_card p-3">
+            <h5><strong>Room Access</strong></h5>
+            <p class="text-secondary store_body">
+              Get Access to ClinifyForest rooms and enjoy study sessions with your Clinify Study Buddies. Purchasing this item will give you access to group sessions on ClinifyForest
+              Get Access to ClinifyForest rooms and enjoy study sessions with your Clinify Study Buddies. Purchasing this item will give you access to group sessions on ClinifyForest
+            </p>
+            <button class="btn btn_primary btn-block mb-2">199 Coins</button>
+            <!-- transaction possible status -->
+            <small class="text-center text-success">You have sufficient coins</small>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+          <div class="card lb_card p-3">
+            <h5><strong>Room Admin</strong></h5>
+            <p class="text-secondary store_body">
+              Only Admins can start the group study sessions on ClinifyForest. Purchasing this item will give you the power to start group study sessions.
+            </p>
+            <!-- button has disabled attribute. -->
+            <button class="btn btn-secondary btn-block mb-2" disabled>999 Coins</button>
+            <!-- transaction not possible status -->
+            <small class="text-center text-danger">Insufficient coins. <a href="./fonderupp-leaderboard.html" class="text_primary">Earn more</a></small>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4 mb-4">
+          <div class="card lb_card p-3">
+            <h5><strong>Water Trees</strong></h5>
+            <p class="text-secondary store_body">
+              Watering your trees will revive your one dead tree.
+            </p>
+            <!-- if instead of button this needs to be anchor tag
+            this is the syntax of having a disabled link
+            there still might be leaks which need to be closed using javascript -->
+            <a href="#" class="btn btn-secondary disabled mb-2" tabindex="-1" role="button" aria-disabled="true">50 Coins</a>
+            <small class="text-center text-danger">All trees alive</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
