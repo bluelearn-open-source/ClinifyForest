@@ -73,11 +73,25 @@
     </button>
 </div>
     {% else %}
-<div class="container d-flex justify-content-center align-items-center" style="height: calc(100vh - 120px);">
-    <strong class="text-black text-center">Login to continue<br>
-    Not able to login?
-            <a href="https://bluelearn.in/discord">Join our discord server</a></strong>
-</div>
+<div class="container mt-4 mt-lg-0">
+      <div class="row mx-0 justify-content-center align-items-center" style="min-height: 90vh;">
+        <div class="col-12 col-lg-8 text-center text-lg-start">
+          <h2><strong>Plant trees on BlueLearn Forest to</strong></h2>
+          <h2>
+            <strong
+               class="txt-rotate"
+               data-period="2000"
+               data-rotate='[ "Remove distractions", "Focus and concentrate", "Increase productivity", "Win rewards" ]'></strong>
+          </h2>
+          <h2 class="mb-4"><strong>And bring the best out of you</strong></h2>
+          <a href="{% url 'discord_login' %}" class="btn btn-lg btn_primary px-5 mb-3">Get Started</a>
+          <p class="mb-0"><small>Unable to Login? <a href="https://bluelearn.in/discord" class="text_primary"><strong>Join our Discord server</strong></small></a></p>
+        </div>
+        <div class="col-8 col-lg-4">
+          <img src="{% static 'landing_hero.png' %}" alt="" class="w-100">
+        </div>
+      </div>
+    </div>
     {% endif %}
 
 

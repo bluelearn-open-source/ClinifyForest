@@ -45,3 +45,21 @@
   top: 23px !important;
   right: -8px !important;
 }
+.btn_primary {
+  background-color: #3d5aff;
+  color: #fff !important;
+  font-weight: bold;
+}
+.btn_primary:hover {
+  background-color: #324ff0;
+}
+.store_body {
+  height: 9em;
+  overflow-y: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
+.txt-rotate {
+  color: #00cb98;
+}
