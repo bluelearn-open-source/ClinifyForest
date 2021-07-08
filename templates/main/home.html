@@ -12,9 +12,31 @@
 {% block body %}
 
 
-    {% if loginuser %}
+    {% if request.user.is_anonymous %}
+<div class="container mt-4 mt-lg-0">
+      <div class="row mx-0 justify-content-center align-items-center" style="min-height: 90vh;">
+        <div class="col-12 col-lg-8 text-center text-lg-start">
+          <h2><strong>Plant trees on BlueForest to</strong></h2>
+          <h2>
+            <strong
+               class="txt-rotate"
+               data-period="2000"
+               data-rotate='[ "Remove distractions", "Focus and concentrate", "Increase productivity", "Win rewards" ]'></strong>
+          </h2>
+          <h2 class="mb-4"><strong>And bring the best out of you</strong></h2>
+          <a href="{% url 'discord_login' %}" class="btn btn-lg btn_primary px-5 mb-3">Get Started</a>
+          <p class="mb-0"><small>Unable to Login? <a href="https://bluelearn.in/discord" class="text_primary"><strong>Join our Discord server</strong></small></a></p>
+        </div>
+        <div class="col-8 col-lg-4">
+          <img src="{% static 'landing_hero.png' %}" alt="" class="w-100">
+        </div>
+      </div>
+    </div>
+    {% else %}
 <!-- Main Timer -->
-<div class="container px-5 d-flex justify-content-center align-items-center flex-column"
+
+  
+<div class="d-flex justify-content-center align-items-center flex-column"
     style="height: calc(100vh - 90px);">
 
     <form action="/" method="post" name="getrange">
@@ -50,7 +72,7 @@
     </div>
 
     <div class="d-flex justify-content-center align-items-center my-3" id="timer">
-        {% if loginuser.in_session %}
+        {% if request.user.in_session %}
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
@@ -62,7 +84,7 @@
     </div>
 
     
-    <button class="btn btn-primary mt-3" id="startbtn" onclick="document.getrange.submit()">
+    <button class="btn btn-primary mt-3 align-middle" id="startbtn" onclick="document.getrange.submit()">
         Start
     </button>
     <button class="btn btn-primary d-none mt-3" data-bs-toggle="modal" data-bs-target="#diedtreemodal" id="giveupbtn">
@@ -72,26 +94,8 @@
         Cancel
     </button>
 </div>
-    {% else %}
-<div class="container mt-4 mt-lg-0">
-      <div class="row mx-0 justify-content-center align-items-center" style="min-height: 90vh;">
-        <div class="col-12 col-lg-8 text-center text-lg-start">
-          <h2><strong>Plant trees on BlueForest to</strong></h2>
-          <h2>
-            <strong
-               class="txt-rotate"
-               data-period="2000"
-               data-rotate='[ "Remove distractions", "Focus and concentrate", "Increase productivity", "Win rewards" ]'></strong>
-          </h2>
-          <h2 class="mb-4"><strong>And bring the best out of you</strong></h2>
-          <a href="{% url 'discord_login' %}" class="btn btn-lg btn_primary px-5 mb-3">Get Started</a>
-          <p class="mb-0"><small>Unable to Login? <a href="https://bluelearn.in/discord" class="text_primary"><strong>Join our Discord server</strong></small></a></p>
-        </div>
-        <div class="col-8 col-lg-4">
-          <img src="{% static 'landing_hero.png' %}" alt="" class="w-100">
-        </div>
-      </div>
-    </div>
+
+
     {% endif %}
 
 
@@ -135,9 +139,9 @@
 </div>
 
 
-{% if loginuser.in_session %}
-<div id="session_end" class="d-none">{{loginuser.session_end_time|date:"M d, Y H:i:s"}}</div>
-<div id="session_duration" class="d-none">{{loginuser.session_end}}</div>
+{% if request.user.in_session %}
+<div id="session_end" class="d-none">{{request.user.session_end_time|date:"M d, Y H:i:s"}}</div>
+<div id="session_duration" class="d-none">{{request.user.session_end}}</div>
 {% endif %}
 
 {% endblock body %}
@@ -148,7 +152,7 @@
 
 <script src="{% static 'main/script.js' %}"></script>
 
-{% if loginuser.in_session %}
+{% if request.user.in_session %}
 <script src="{% static 'main/timer.js' %}"></script>
 {% endif %}
 

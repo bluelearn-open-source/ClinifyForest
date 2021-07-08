@@ -29,48 +29,11 @@
             </p>
 
 
-          {% if loginuser %}
-            {% if storeitem.item_name == 'Room Access' %}
-                {% if request.user.room_access %}
-                <button class="btn btn-secondary disabled btn-block mb-2">{{storeitem.item_price}} Coins</button>
-                <!-- transaction possible status -->
-                <small class="text-center text-success">You already own this item</small>
-                {% else %}
-                    {% if request.user.coins >= storeitem.item_price %}
-                    <form action="/store" id="form1" method="POST">
-                    {% csrf_token %}
-                        <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
-                    </form>
-                        <button class="btn btn_primary btn-block mb-2" onclick="document.getElementById('form1').submit();">{{storeitem.item_price}} Coins</button>
-                        <small class="text-center text-success">You have sufficient coins</small>
-                    {% else %}
-                    <button class="btn btn-secondary btn-block mb-2" disabled>{{storeitem.item_price}} Coins</button>
-                    <!-- transaction not possible status -->
-                    <small class="text-center text-danger">Insufficient coins. <a href="{% url 'home' %}" class="text_primary">Earn more</a></small>
-                    {% endif %}
-                {% endif %}
-            {% endif %}
-
-            {% if storeitem.item_name == 'Room Admin' %}
-                {% if request.user.room_admin %}
-                <button class="btn btn-secondary disabled btn-block mb-2">{{storeitem.item_price}} Coins</button>
-                <!-- transaction possible status -->
-                <small class="text-center text-success">You already own this item</small>
-                {% else %}
-                    {% if request.user.coins >= storeitem.item_price %}
-                    <form action="/store" id="form2" method="POST">
-                    {% csrf_token %}
-                        <input type="hidden" name="hidden" value="{{storeitem.item_name}}">
-                    </form>
-                        <button class="btn btn_primary btn-block mb-2" onclick="document.getElementById('form2').submit();">{{storeitem.item_price}} Coins</button>
-                        <small class="text-center text-success">You have sufficient coins</small>
-                    {% else %}
-                    <button class="btn btn-secondary btn-block mb-2" disabled>{{storeitem.item_price}} Coins</button>
-                    <!-- transaction not possible status -->
-                    <small class="text-center text-danger">Insufficient coins. <a href="{% url 'home' %}" class="text_primary">Earn more</a></small>
-                    {% endif %}
-                {% endif %}
-            {% endif %}
+          {% if request.user.is_anonymous %}
+          <button class="btn btn-secondary disabled btn-block mb-2">{{storeitem.item_price}} Coins</button>
+          <!-- transaction possible status -->
+          <small class="text-center text-danger">You are not Logged in</small>
+          {% else %}
             {% if storeitem.item_name == 'Water Your Trees' %}
             {% if request.user.deadtrees > 0 %}
                     {% if request.user.coins >= storeitem.item_price %}
@@ -91,10 +54,6 @@
                 <small class="text-center text-success">You have zero dead trees</small>
                     {% endif %}
                 {% endif %}
-          {% else %}
-          <button class="btn btn-secondary disabled btn-block mb-2">{{storeitem.item_price}} Coins</button>
-          <!-- transaction possible status -->
-          <small class="text-center text-danger">You are not Logged in</small>
           {% endif %}
 
           </div>

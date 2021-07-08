@@ -13,8 +13,6 @@ class DiscordUser(models.Model):
     coins = models.PositiveIntegerField(default=0)
     trees = models.IntegerField(default=0)
     deadtrees = models.IntegerField(default=0)
-    room_admin = models.BooleanField(default=False)
-    room_access = models.BooleanField(default=False)
     in_session = models.BooleanField(default=False)
     session_end = models.DurationField(blank=True, null=True)
     session_end_time = models.DateTimeField(blank=True, null=True)

@@ -1,14 +1,15 @@
+
 .show_message {
   display: block;
 }
 #timer {
-  width: 200px;
+  width: 220px;
   background-color: #fff;
-  height: 200px;
-  border-radius: 50%;
+  height: 220px;
+  border-radius: 20px;
   border: 10px solid #fff;
-  
 }
+
 .white-text-timer {
   color: #0d6efd !important;
 }

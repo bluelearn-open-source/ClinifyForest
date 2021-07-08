@@ -50,13 +50,11 @@ INSTALLED_APPS = [
 
     # my installations
     'pwa',
-    'channels',
     'rest_framework',
 
     # my apps
     'main.apps.MainConfig',
     'login.apps.LoginConfig',
-    'rooms.apps.RoomsConfig',
     'api.apps.ApiConfig',
 ]
 
@@ -92,8 +90,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ClinifyForest.wsgi.application'
-
-ASGI_APPLICATION = 'ClinifyForest.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {
