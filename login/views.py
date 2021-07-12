@@ -19,20 +19,23 @@ def discord_login(request):
     return redirect(oauth2_redirect_url)
 
 def discord_login_redirect(request):
-    code = request.GET.get('code')
-    data = exchange_data(code)
-    user = data[0]
-    guilds = data[1]
-    flag = 0
-    for ind in guilds:
-        for key in ind:
-            if (ind["id"] == os.environ.get('CLINIFY_SERVER_ID')):
-                flag = 1
-    if flag==1:
-        discord_user = authenticate(request, user=user)
-        login(request, discord_user, backend='login.auth.DiscordAuthenticationBackend')
+    try:
+        code = request.GET.get('code')
+        data = exchange_data(code)
+        user = data[0]
+        guilds = data[1]
+        flag = 0
+        for ind in guilds:
+            for key in ind:
+                if (ind["id"] == os.environ.get('CLINIFY_SERVER_ID')):
+                    flag = 1
+        if flag==1:
+            discord_user = authenticate(request, user=user)
+            login(request, discord_user, backend='login.auth.DiscordAuthenticationBackend')
+            return redirect(home)
         return redirect(home)
-    return redirect(home)
+    except:
+        return redirect(home)
 
 
 def exchange_data(code: str):
