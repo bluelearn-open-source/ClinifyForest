@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Feed{% endblock title %}
+
+{% load static %}
+{% load humanize %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'main/style.css' %}">
+{% endblock style %}
+
+{% block body %}
+
+<div class="container my-5">
+      <div class="row mx-0">
+        <div class="col-12 my-2">
+          <h2 class="text-center"><strong>Feed</strong></h2>
+        </div>
+       
+        
+        <div class="list-group ">
+          {% for feeditem in feed %}
+  <div class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+      <p class="mb-1"><strong>{{feeditem.user.discord_tag}}</strong></p>
+      <small class="text-muted">{{feeditem.timestamp|naturaltime}}</small>
+    </div>
+    <small class="mb-1">{{feeditem.content}}</small>
+  </div>
+  {% endfor %}
+</div>
+
+    </div>
+<div>
+
+
+
+{% endblock body %}

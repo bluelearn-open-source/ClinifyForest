@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # my installations
     'pwa',
     'rest_framework',
+    'django.contrib.humanize',
 
     # my apps
     'main.apps.MainConfig',

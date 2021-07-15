@@ -58,21 +58,28 @@ def finalizesession(request, hiddenval, rangec):
         return redirect(home)
 
 def home(request):
-    feed = Feed.objects.order_by('-timestamp')[:8]
     if request.method=='POST':
         hiddenval = int(request.POST['hidden'])
         rangec = int(request.POST['range'])
+        try:
+            feedtext = request.POST['feedtext']
+            feed = Feed.objects.create(user = request.user, content=feedtext)
+        except:
+            pass
         if (request.user.in_session == True):
             finalizesession(request, hiddenval, rangec)
         else:
             setsession(request, rangec)
-    params = {'feed':feed}
-    return render(request, 'main/home.html', params)
+    return render(request, 'main/home.html')
 
 def lb(request):
     users = DiscordUser.objects.order_by('-trees', 'deadtrees')[:50]
     params = {'users': users}
     return render(request, 'main/lb.html', params)
+
+def feed(request):
+    feed = Feed.objects.order_by('-timestamp')
+    return render(request, 'main/feed.html', {'feed': feed})
 
 def store(request):
     if request.method=='POST':

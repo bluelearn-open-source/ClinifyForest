@@ -39,7 +39,7 @@
 <div class="d-flex justify-content-center align-items-center flex-column"
     style="height: calc(100vh - 90px);">
 
-    <form action="/" method="post" name="getrange">
+    <form action="/" method="post" id="mainstartform" name="getrange">
         {% csrf_token %}
         <label for="range" style="color:transparent; font-size:1px;">Range</label><br>
         <input type="range" value=1 onclick="checkr()" onchange="checkr()" id="range" style="width: 300px !important;"
@@ -84,7 +84,7 @@
     </div>
 
     
-    <button class="btn btn-primary mt-3 align-middle" id="startbtn" onclick="document.getrange.submit()">
+    <button class="btn btn-primary mt-3 align-middle" id="startbtn" data-bs-toggle="modal" data-bs-target="#startmodel" >
         Start
     </button>
     <button class="btn btn-primary d-none mt-3" data-bs-toggle="modal" data-bs-target="#diedtreemodal" id="giveupbtn">
@@ -111,6 +111,29 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <button class="btn btn-primary" onclick="giveup()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="startmodel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="startmodelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="startmodelLabel">Lets start your session!!</h5>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <span class="position-absolute top-10 translate-middle badge rounded-pill bg-primary" style="right:-10px;">
+                        Beta
+                    </span>
+                    <textarea class="form-control" style="font-size:14px;" required form="mainstartform" placeholder="Enter Something Productive Here... Maybe a quote or your goal for this session." name="feedtext" id="feed" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" onclick="document.getrange.submit()">Start</button>
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from main.views import home, lb, store, reset, assetlinks, sitemap, getFile
+from main.views import home, lb, store, reset, assetlinks, sitemap, getFile, feed
 from login.views import discord_logout, discord_login, discord_login_redirect
 
 
@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('pwa.urls')),
     path('leaderboard', lb, name="lb"),
     path('store', store, name="store"),
+    path('feed', feed, name="feed"),
     path('sitemap.xml', sitemap, name="sitemap"),
     path('api/', include('api.urls')),
     path('clinifyforest/api/', include('api.urls')),
