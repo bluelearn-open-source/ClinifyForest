@@ -61,14 +61,17 @@ def home(request):
     if request.method=='POST':
         hiddenval = int(request.POST['hidden'])
         rangec = int(request.POST['range'])
-        try:
-            feedtext = request.POST['feedtext']
-            feed = Feed.objects.create(user = request.user, content=feedtext)
-        except:
-            pass
         if (request.user.in_session == True):
             finalizesession(request, hiddenval, rangec)
         else:
+            try:
+                feedtext = request.POST['feedtext']
+                if len(feedtext) > 10:
+                    feed = Feed.objects.create(user = request.user, content=feedtext)
+                else:
+                    pass
+            except:
+                pass
             setsession(request, rangec)
     return render(request, 'main/home.html')
 
