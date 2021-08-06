@@ -3,6 +3,9 @@ from . import views
 from rest_framework import routers
 
 urlpatterns = [
+    path('backup/user', views.backupusr.as_view()),
+    path('backup/store', views.backupstr.as_view()),
+    path('backup/feed', views.backupfed.as_view()),
     path('getlb', views.getlb.as_view()),
     path('getuser/<int:id>', views.getuser.as_view()),
     path('getlb/<int:num>', views.getlbbynum.as_view()),
