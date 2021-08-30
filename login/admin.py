@@ -7,7 +7,7 @@ admin.site.unregister(Group)
 
 
 @admin.register(DiscordUser)
-class DiscordUserAdmin:
+class DiscordUserAdmin(admin.ModelAdmin):
     list_display = ("discord_tag", "coins", "trees",
                     "deadtrees", "in_session", "slowmode")
     list_filter = ("discord_tag", "coins", "trees",
